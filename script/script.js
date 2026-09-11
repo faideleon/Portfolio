@@ -16,7 +16,7 @@ gsap.to(track, {
 });
 
 async function getContributions() {
-    const myContribution = await fetch('https://github-contributions-api.jogruber.de/v4/Faisal-Khan06');
+    const myContribution = await fetch('https://github-contributions-api.jogruber.de/v4/faideleon');
     const data = await myContribution.json();
 
     showContributions(data.contributions);
@@ -127,6 +127,31 @@ function hoverContributions(gitData) {
     }
 }
 
+
+function calendarMonths(gitArray) {
+    const graph_months = document.querySelector('.graph-months');
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    let lastMonth = -1;
+
+    gitArray.forEach((day, index) => {
+        const date = new Date(day.date);
+        const month = date.getMonth();
+        const columnDay = Math.floor(index / 7);
+        if (lastMonth != month) {
+            lastMonth = month;
+            element = document.createElement('span');
+            element.innerHTML = months[month];
+            element.classList.add('month-label');
+            element.style.gridColumnStart = columnDay + 1;
+
+            graph_months.append(element);
+        }
+
+
+
+    });
+}
 
 function calendarMonths(gitArray) {
     const graph_months = document.querySelector('.graph-months');
