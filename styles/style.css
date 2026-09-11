@@ -1164,7 +1164,7 @@ body {
 }
 
 .graph-content {
-    flex: 5;
+    flex: 1;
 }
 
 .circle {
@@ -1215,8 +1215,7 @@ body {
     grid-auto-columns: 10px;
     grid-auto-flow: column;
     gap: 3px;
-    padding-left: 50px;
-    padding-right: 50px;
+
 
 
 }
@@ -1269,8 +1268,6 @@ body {
 
 .graph-months {
     transform: translate(1px, 17px);
-    padding-left: 50px;
-    padding-right: 50px;
     display: grid;
     grid-auto-columns: 13px;
     grid-auto-flow: column;
@@ -1305,4 +1302,30 @@ body {
 
 .graph-months span:nth-child(6) {
     grid-column-start: 21;
+}
+
+.graph-content-container {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.content-weekday-labels {
+    margin-top: 30px;
+    margin-right: 5px;
+    display: grid;
+    grid-template-rows: repeat(7, 13px);
+
+}
+
+.content-of-graph {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dayDate {
+    font-size: 8px;
+    color: rgba(0, 0, 0, 0.507);
 }
