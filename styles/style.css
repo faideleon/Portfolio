@@ -1034,6 +1034,14 @@ body {
     user-select: none;
 }
 
+.watermark.contact {
+    font-size: 350px;
+    font-family: 'sfp', serif;
+    font-weight: bold;
+    color: rgb(243, 237, 200);
+    bottom: 40%;
+}
+
 .gc-content {
     position: relative;
     z-index: 8;
@@ -1042,7 +1050,7 @@ body {
 .gc-content-main {
     margin-top: 150px;
     display: grid;
-    grid-template-columns: 1fr 1fr 4fr;
+    grid-template-columns: 1fr 1fr 3fr;
     grid-template-rows: auto auto;
     grid-template-areas: "date date graph" "streak active graph";
     row-gap: 20px;
@@ -1057,6 +1065,7 @@ body {
     padding: 24px;
     backdrop-filter: blur(6px);
 }
+
 
 
 
@@ -1139,12 +1148,18 @@ body {
     color: rgba(0, 0, 0, 0.89);
     font-size: 10px;
     letter-spacing: 0.2px;
-    gap: 10px;
+    gap: 5px;
     margin-left: 50px;
     display: flex;
     flex-direction: column;
-    padding: 50px 20px;
+    padding: 40px 20px;
+    align-items: center;
 }
+
+.graph hr {
+    width: 90%;
+}
+
 
 
 .graph-desc {
@@ -1155,6 +1170,9 @@ body {
     align-items: center;
     justify-content: space-between;
     letter-spacing: 1px;
+    margin-top: 10px;
+    width: 90%;
+
 }
 
 .graph-desc h5 {
@@ -1191,13 +1209,13 @@ body {
 
 .circle:nth-child(3),
 .third-color {
-    background-color: #216948;
+    background-color: #277a55;
     opacity: 0.5;
 }
 
 .circle:nth-child(4),
 .fourth-color {
-    background-color: #298f5f;
+    background-color: #2e9e6a;
     opacity: 0.8;
 }
 
@@ -1307,8 +1325,8 @@ body {
 .graph-content-container {
     display: flex;
     align-items: flex-start;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .content-weekday-labels {
@@ -1328,4 +1346,84 @@ body {
 .dayDate {
     font-size: 8px;
     color: rgba(0, 0, 0, 0.507);
+}
+
+.contact-page {
+    position: relative;
+    z-index: 8;
+    min-height: 100vh;
+    background-color: rgb(29, 30, 32);
+    color: rgba(231, 227, 223, 0.932);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.contact-place {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    left: 50%;
+    top: 60px;
+    transform: translateX(-50%);
+}
+
+.contact-place span {
+    color: rgba(255, 255, 255, 0.459);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    display: block;
+}
+
+.contact-h1 {
+
+    font-family: 'sfp', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 150px;
+    letter-spacing: 1px;
+}
+
+.contact-h1 span {
+    display: block;
+    transform: translateY(-20px);
+}
+
+.contact-email {
+    letter-spacing: -3px;
+    color: rgba(255, 255, 255, 0.726);
+    margin-top: 10px;
+    font-weight: 200;
+    font-size: 25px;
+}
+
+.contact-links span {
+    color: rgba(255, 255, 255, 0.459);
+    font-weight: 400;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.contact-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.footer {
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.329);
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
 }
