@@ -5,6 +5,26 @@
     font-family: 'martian mono', serif;
 }
 
+.scroll-watcher {
+    scale: 0 1;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 1000;
+    height: 3px;
+    background-color: rgb(26, 25, 25);
+    animation: scroll-watcher linear;
+    animation-timeline: scroll();
+    transform-origin: left;
+}
+
+@keyframes scroll-watcher {
+    to {
+        scale: 1 1;
+    }
+}
+
+
 @font-face {
     font-family: 'SFP';
     font-weight: normal;
@@ -1438,9 +1458,13 @@ body {
 
 
 
-.contact-email:hover {}
+.contact-links span:hover {
+    color: rgba(255, 255, 255, 0.842);
+}
 
 .contact-links span {
+    transition: color 0.2s ease-in-out;
+    cursor: pointer;
     color: rgba(255, 255, 255, 0.459);
     font-weight: 400;
     font-size: 10px;
