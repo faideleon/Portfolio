@@ -15,6 +15,47 @@ gsap.to(track, {
     }
 });
 
+
+gsap.from(".after-hero-h2 .line", {
+    opacity: 0,
+    y: 30,
+    stagger: 0.15,
+    scrollTrigger: {
+        trigger: ".after-hero-h2",
+        start: "top 50%",
+        end: "top 30%",
+        scrub: 1
+    }
+});
+
+gsap.from('.experiences-h1', {
+    scale: .5,
+    opacity: 0,
+    y: 100,
+    filter: 'blur(100px)',
+    scrollTrigger: {
+        trigger: '.experiences',
+        start: 'top 100%',
+        end: 'top 0%',
+        scrub: 1
+    }
+});
+
+gsap.from('.career-archive', {
+    opacity: 0,
+    y: "+=5",
+    scrollTrigger: {
+        trigger: '.experiences',
+        start: 'bottom bottom',
+        end: 'bottom 90%',
+        scrub: 1
+    }
+});
+
+
+
+
+
 async function getContributions() {
     const myContribution = await fetch('https://github-contributions-api.jogruber.de/v4/faideleon');
     const data = await myContribution.json();

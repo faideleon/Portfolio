@@ -41,6 +41,8 @@
 
 
 
+
+
 .inner-techstack>div {
     flex: 0 0 auto;
     font-size: 14px;
@@ -335,7 +337,7 @@ body {
 .information {
     position: relative;
     z-index: 2;
-    overflow: hidden;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -346,20 +348,34 @@ body {
 
 }
 
-.after-hero-h2 {
+
+
+.after-hero-h2 .line span {
     font-family: 'SFP', serif;
     letter-spacing: -1px;
     font-size: 60px;
     font-weight: normal;
     color: rgb(163, 162, 161);
     text-align: center;
+    display: block;
 
 }
+
+
+.after-hero-h2 .line {
+    display: block;
+    overflow: hidden;
+}
+
+
+
+
 
 .after-hero-h2 strong {
     font-family: 'SFP', serif;
     font-weight: bold;
     color: rgb(231, 227, 223);
+    text-align: center;
 }
 
 .experiences {
@@ -387,7 +403,7 @@ body {
     color: rgba(41, 42, 44, 0.966);
     font-family: 'SFP';
     font-weight: 600;
-    font-size: 250px;
+    font-size: 300px;
     filter: blur(6px);
 }
 
@@ -408,7 +424,11 @@ body {
     justify-content: space-between;
     align-items: center;
     transform: translateY(-200px);
+
+
 }
+
+
 
 .career-column {
     filter: blur(0.3px);
