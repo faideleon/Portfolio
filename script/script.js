@@ -3,9 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const track = document.querySelector('.card-container');
 const distance = () => track.scrollWidth - window.innerWidth;
 
-gsap.to(track, {
-    x: () => -distance(),
-    ease: 'none',
+const tl = gsap.timeline({
     scrollTrigger: {
         trigger: '.horizontal-section',
         pin: true,
@@ -13,6 +11,13 @@ gsap.to(track, {
         end: () => `+=${distance()}`,
         invalidateOnRefresh: true
     }
+});
+
+tl.to({}, { duration: 2 });
+tl.to(track, {
+    x: () => -distance(),
+    ease: 'none',
+    duration: 2,
 });
 
 
@@ -57,10 +62,10 @@ const boxes = document.querySelectorAll('.card');
 gsap.from('.card', {
     opacity: 0,
     scale: 0.9,
-    stagger: 1,
-    ease: 'power2.out',
+    stagger: 0.5,
+    ease: 'power4.in',
     scrollTrigger: {
-        trigger: '.card',
+        trigger: '.horizontal-section',
         start: 'top 90%',
         end: 'top 10%',
         scrub: 3,
