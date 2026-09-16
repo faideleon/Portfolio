@@ -658,7 +658,7 @@ body {
 .portfolio-showcase-underlay {
     position: sticky;
     z-index: 6;
-    height: 100vh;
+    height: 50vh;
     background-color: rgb(231, 227, 223);
 }
 
@@ -671,6 +671,12 @@ body {
     border-radius: 50px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+}
+
+.overlay-holder {
+    z-index: 6;
+    position: relative;
+
 }
 
 .pnb {
