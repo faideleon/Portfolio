@@ -1,5 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
+
+window.addEventListener('load', () => ScrollTrigger.refresh());
 const track = document.querySelector('.card-container');
 const distance = () => track.scrollWidth - window.innerWidth;
 
@@ -28,71 +30,13 @@ gsap.to('.overlay-holder', {
         start: 'top 50%',
         end: 'top 10%',
         scrub: 0.5,
-    }
-});
 
-gsap.from('.project-card', {
-    opacity: 0,
-    scale: 0.9,
-
-    scrollTrigger: {
-        trigger: '.project-card',
-        start: 'bottom bottom',
-        end: 'top 20%',
-        scrub: 1,
     }
 });
 
 
-gsap.from('.pc-main', {
-    opacity: 0,
-    scale: 0.9,
-
-    scrollTrigger: {
-        trigger: '.pc-main',
-        start: 'bottom bottom',
-        end: 'top 20%',
-        scrub: 1,
-    }
-});
 
 
-gsap.from('.contact-h1', {
-
-    y: '25vh',
-    ease: 'power1.in',
-    scrollTrigger: {
-        trigger: '.contact-page',
-        start: 'top bottom',
-        end: 'top 20%',
-        scrub: 1,
-    }
-})
-
-gsap.from('.contact-email', {
-    opacity: 0,
-    y: '10vh',
-    ease: 'power1.in',
-    scrollTrigger: {
-        trigger: '.contact-page',
-        start: 'top 50%',
-        end: 'top 10%',
-        scrub: 1,
-    }
-})
-
-gsap.from('.contact-links span', {
-    opacity: 0,
-    stagger: 0.1,
-    y: '5vh',
-    ease: 'power2.inOut',
-    scrollTrigger: {
-        trigger: '.contact-page',
-        start: 'top 20%',
-        end: 'top 10%',
-        scrub: 1,
-    }
-})
 
 
 
@@ -207,6 +151,7 @@ async function getContributions() {
         streakHeading.innerHTML = `${streakNumber}`;
         streakSpan.innerHTML = `${streakNumber === 1 ? 'day' : 'days'}`
     }
+
 }
 
 function getStreak(gitData) {
