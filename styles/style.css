@@ -139,6 +139,7 @@ body {
 }
 
 .nav-bar {
+    pointer-events: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -161,6 +162,7 @@ body {
 
 
 .logo {
+    pointer-events: auto;
     transition: filter 0s linear;
     text-decoration: none;
     padding: 15px;
@@ -184,6 +186,7 @@ body {
 }
 
 .logo-name {
+    pointer-events: auto;
     transition: filter 0.5s ease-in-out;
     background-color: rgb(231, 227, 223);
     text-decoration: none;
@@ -209,6 +212,7 @@ body {
 }
 
 .menu {
+    pointer-events: auto;
     width: 100px;
     position: relative;
     z-index: 1001;
