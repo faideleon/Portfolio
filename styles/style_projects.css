@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SFP', serif;
+}
+
+
+@font-face {
+    font-family: 'SFP';
+    font-weight: normal;
+    src: url('../fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+}
+
+@font-face {
+    font-family: 'SFP';
+    src: url('../fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'SFP';
+    src: url('../fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+    font-weight: 600;
+}
+
+
+
+.nav-bar>div {
+    padding: 10px 20vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.nav-bar {
+    width: 100%;
+    padding-top: 5px;
+}
+
+.right-nav-bar a {
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.right-nav-bar,
+.left-nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-name {
+    pointer-events: auto;
+    transition: filter 0.5s ease-in-out;
+    background-color: rgb(231, 227, 223);
+    text-decoration: none;
+    color: rgba(70, 66, 66, 0.801);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.068);
+    letter-spacing: 1px;
+    padding: 0px 17px;
+    font-size: 9px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: "Martian Mono", Times, serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: -20px;
+
+}
+
+.logo {
+    pointer-events: auto;
+    transition: filter 0s linear;
+    text-decoration: none;
+    padding: 15px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    background-color: rgb(29, 30, 32);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.logo span {
+    margin-right: 0.5px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.nav-bar hr {
+    border-color: rgba(0, 0, 0, 0.288);
+}
+
+.right-nav-bar a:nth-child(1) {
+    color: rgba(70, 66, 66, 0.801);
+    margin-right: 20px;
+    transition: color 0.2s ease-in-out;
+}
+
+.right-nav-bar a:nth-child(1):hover {
+    color: rgba(27, 26, 26, 0.938);
+}
+
+.right-nav-bar a:nth-child(2) {
+    font-size: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+
+
+.projects-page {
+    min-height: 100vh;
+    padding: 100px 20vw;
+}
+
+.pnb-link {
+    text-decoration: none;
+    color: rgba(54, 51, 51, 0.575);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    width: max-content;
+    transition: color 0.2s ease-in-out;
+    font-weight: bold;
+}
+
+
+
+.pnb-link span svg {
+    transform: rotate(180deg);
+    margin-top: 5px;
+    transition: transform 0.3s ease-in-out, fill 0.2s ease-in-out;
+    fill: rgba(0, 0, 0, 0.5);
+    height: 15px;
+    width: auto;
+}
+
+.pnb-link:hover span svg {
+    transform: translateX(-4px) rotate(180deg);
+    fill: rgba(0, 0, 0, 0.993)
+}
+
+.pnb-link:hover {
+    color: rgba(0, 0, 0, 0.685);
+}
+
+.section-left h5 {
+    transition: border-bottom 0.1 s ease-in-out;
+    gap: 5px;
+    display: flex;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-family: 'sfp', serif;
+    color: rgb(54, 51, 51);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.226);
+    padding-bottom: 5px;
+    cursor: pointer;
+    width: max-content;
+}
+
+.section-left h5 span svg {
+    transition: transform 0.2s ease-in-out;
+    margin-top: -1px;
+    fill: rgb(54, 51, 51);
+    height: 15px;
+    width: auto;
+    transform: rotate(-50deg);
+}
+
+.section-left h5:hover span svg {
+    transform: translate(2px, -2px) rotate(-50deg);
+}
+
+.section-left h5:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.562);
+}
+
+.project-section.one {
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.section-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.section-right {
+    display: flex;
+
+}
+
+.project-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    white-space: nowrap;
+}
+
+.section-left h1 {
+    font-size: 100px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.section-left h4 {
+    color: rgba(0, 0, 0, 0.363);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Martian Mono';
+}
+
+.section-left h3 {
+    color: rgba(0, 0, 0, 0.527);
+    font-weight: normal;
+    margin-top: -10px;
+}
+
+.section-left h5 {
+    margin-top: 30px;
+}
+
+.section-left {
+    padding-right: 80px;
+}
+
+.section-right {
+
+    margin-top: 200px;
+    gap: 20px;
+}
+
+.info-snippets h4 {
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(0, 0, 0, 0.493);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info-snippets h3 {
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.808);
+}
+
+.info-snippets a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.808);
+    font-weight: bold;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.322);
+    padding-bottom: 1px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.info-snippets a:hover {
+    border-color: rgba(0, 0, 0, 0.562);
+}
