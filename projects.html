@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Projects | Faisal</title>
     <link rel="stylesheet" href="styles/style_projects.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -12,11 +12,13 @@
 </head>
 
 <body>
+    <div class="scroll-watcher"></div>
+
     <section class="nav-bar">
         <div>
             <div class="left-nav-bar">
-                <a href="#" class="logo"><span>F</span></a>
-                <h2 class="logo-name">Faisal/Portfolio</h2>
+                <a href="index.html" class="logo"><span>F</span></a>
+                <a href="index.html" class="logo-name">Faisal / Portfolio</a>
             </div>
             <div class="right-nav-bar">
                 <a href="index.html">Home</a>
@@ -28,42 +30,157 @@
     </section>
 
     <section class="projects-page">
-        <a href="projects.html" class="pnb-link"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                    viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                    <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                </svg></span>alL Projects </a>
 
-        <div class="project-section one">
-            <div class="section-left">
-                <h4>Project 01 / Fullstack</h4>
-                <h1>Zer0ed Game Development</h1>
-                <h3>An internal enterprise LMS built for PT. Komatsu Remanufacturing Asia that centralizes employee
-                    training workflows — from planning, approvals, scheduling, to certification tracking and reporting
-                    dashboards.</h3>
-                <h5>View Project Archive <span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+        <!-- HERO -->
+        <div class="projects-hero">
+            <span class="watermark">Work</span>
+            <h4>Project Index / 03</h4>
+            <h1>All projects.</h1>
+            <h3>Games, mobile apps, and fullstack systems I've designed and shipped — from data architecture to
+                the interface people actually touch.</h3>
+            <a href="#" class="archive-link">Open Project Archive <span><svg xmlns="http://www.w3.org/2000/svg"
+                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                    </svg></span></a>
+        </div>
+
+        <!-- FILTER -->
+        <div class="projects-filter">
+            <hr>
+            <h4>Filter by discipline</h4>
+            <div class="filter-row">
+                <div class="filter-buttons">
+                    <button class="filter-button active" type="button" data-filter="all">All projects
+                        <span>03</span></button>
+                    <button class="filter-button" type="button" data-filter="mobile">Mobile <span>01</span></button>
+                    <button class="filter-button" type="button" data-filter="game">Game <span>01</span></button>
+                    <button class="filter-button" type="button" data-filter="frontend">Frontend
+                        <span>01</span></button>
+                </div>
+                <h5 class="filter-count">Showing 03 projects</h5>
+            </div>
+            <hr>
+        </div>
+
+        <!-- PROJECT GRID -->
+        <div class="projects-grid">
+
+            <a href="project-zer0ed.html" class="project-card" data-discipline="game">
+                <div class="card-image zer0ed">
+                    <div class="preview-slider">
+                        <div class="slider-track">
+                            <img src="assets/Zer0ed-day.png" alt="Pixel-art hex island: the squad's camp, a trail across the river, and an overgrown house to loot">
+                            <img src="assets/Zer0ed-battle.png" alt="Pixel-art auto-battle: the squad faces purple mutants across hex tiles">
+                            <img src="assets/Zer0ed-night.png" alt="Pixel-art hex island at night, lit by the campfire and house windows">
+                        </div>
+                        <div class="slider-controls">
+                            <span class="slider-count">01 / 03</span>
+                            <div class="slider-dots">
+                                <button type="button" aria-label="Preview 1"></button>
+                                <button type="button" aria-label="Preview 2"></button>
+                                <button type="button" aria-label="Preview 3"></button>
+                            </div>
+                            <button class="slider-prev" type="button" aria-label="Previous preview"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" /></svg></button>
+                            <button class="slider-next" type="button" aria-label="Next preview"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" /></svg></button>
+                        </div>
+                    </div>
+                    <span class="card-tag">Game</span>
+                    <span class="card-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
                             viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
                             <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                        </svg></span></h5>
-            </div>
-            <div class="section-right">
-                <hr>
-                <div class="project-infos">
-                    <div class="info-snippets">
-                        <h4>ROLE</h4>
-                        <h3>Fullstack Developer</h3>
-                    </div>
-                    <div class="info-snippets">
-                        <h4>Discipline</h4>
-                        <h3>Fullstack Development</h3>
-                    </div>
-                    <div class="info-snippets">
-                        <h4>Related Experience</h4>
-                        <a href="">2D Top-down Programming<br>Language Game</a>
-                    </div>
+                        </svg></span>
                 </div>
-            </div>
+                <hr>
+                <h4>01 / Software Engineer</h4>
+                <h2>Zer0ed</h2>
+                <p>A 2D hex-map survival game with a real-time auto-battler — scavenge, craft, and lead a squad
+                    across an island a hundred years after the fall.</p>
+            </a>
+
+            <a href="project-ruta.html" class="project-card" data-discipline="mobile">
+                <div class="card-image ruta">
+                    <div class="preview-slider">
+                        <div class="slider-track">
+                            <img src="assets/Ruta-screens.png" alt="Ruta home, route detail, and active trip screens">
+                            <img src="assets/Ruta-post.png" alt="Ruta post a route flow">
+                            <img src="assets/Ruta-travel.png" alt="Ruta travel pack screens">
+                        </div>
+                        <div class="slider-controls">
+                            <span class="slider-count">01 / 03</span>
+                            <div class="slider-dots">
+                                <button type="button" aria-label="Preview 1"></button>
+                                <button type="button" aria-label="Preview 2"></button>
+                                <button type="button" aria-label="Preview 3"></button>
+                            </div>
+                            <button class="slider-prev" type="button" aria-label="Previous preview"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" /></svg></button>
+                            <button class="slider-next" type="button" aria-label="Next preview"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" /></svg></button>
+                        </div>
+                    </div>
+                    <span class="card-tag">Mobile</span>
+                    <span class="card-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                            <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                        </svg></span>
+                </div>
+                <hr>
+                <h4>02 / Founder / Developer</h4>
+                <h2>Ruta</h2>
+                <p>A live map and rider community for Baguio's jeepney routes. Riders describe a route in plain
+                    words, AI drafts the stops, and GPS confirmations from real trips mark it as verified — with an
+                    offline Travel Pack for tourists.</p>
+            </a>
+
+            <a href="project-portfolio.html" class="project-card" data-discipline="frontend">
+                <div class="card-image">
+                    <div class="preview-slider">
+                        <div class="slider-track">
+                            <img src="assets/portfolio-hero.png" alt="Portfolio home page hero">
+                            <img src="assets/portfolio-projects.png" alt="Portfolio projects index">
+                            <img src="assets/portfolio-detail.png" alt="Portfolio project page">
+                        </div>
+                        <div class="slider-controls">
+                            <span class="slider-count">01 / 03</span>
+                            <div class="slider-dots">
+                                <button type="button" aria-label="Preview 1"></button>
+                                <button type="button" aria-label="Preview 2"></button>
+                                <button type="button" aria-label="Preview 3"></button>
+                            </div>
+                            <button class="slider-prev" type="button" aria-label="Previous preview"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" /></svg></button>
+                            <button class="slider-next" type="button" aria-label="Next preview"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" /></svg></button>
+                        </div>
+                    </div>
+                    <span class="card-tag">Frontend</span>
+                    <span class="card-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                            <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                        </svg></span>
+                </div>
+                <hr>
+                <h4>03 / Fullstack Developer</h4>
+                <h2>Personal Portfolio</h2>
+                <p>This site — a hand-built portfolio where smooth scrolling, small details, and plenty of space let
+                    the work speak first.</p>
+            </a>
+
         </div>
+
+        <!-- CALL TO ACTION -->
+        <div class="projects-cta">
+            <div>
+                <h4>Have a project in mind?</h4>
+                <h1>Let's build something useful.</h1>
+            </div>
+            <a href="mailto:faideleon25@gmail.com" class="archive-link">Start a conversation</a>
+        </div>
+
+        <h6 class="projects-footer">© 2026 Faisal D. Khan All rights reserved.</h6>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+    <script src="script/script_preview.js"></script>
+    <script src="script/script_projects.js"></script>
 </body>
 
 </html>

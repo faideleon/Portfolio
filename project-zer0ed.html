@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zer0ed | Faisal</title>
+    <link rel="stylesheet" href="styles/style_projects.css">
+    <link rel="stylesheet" href="styles/style_project_detail.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="scroll-watcher"></div>
+
+    <section class="nav-bar">
+        <div>
+            <div class="left-nav-bar">
+                <a href="index.html" class="logo"><span>F</span></a>
+                <a href="index.html" class="logo-name">Faisal / Portfolio</a>
+            </div>
+            <div class="right-nav-bar">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+            </div>
+        </div>
+        <hr>
+
+    </section>
+
+    <section class="project-page">
+        <a href="projects.html" class="back-link"><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                    </svg></span>All Projects</a>
+
+        <!-- HEADER -->
+        <div class="project-header">
+            <div class="header-left">
+                <h4>Project 01 / Game</h4>
+                <h1>Zer0ed</h1>
+                <h3>Zer0ed: 100 Years Later — a 2D hex-map survival game with a real-time auto-battler, built solo in Unity.</h3>
+                <a href="#" class="archive-link">View Project Archive <span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                    </svg></span></a>
+            </div>
+            <div class="header-right">
+                <div>
+                    <h4>Role</h4>
+                    <h3>Software Engineer</h3>
+                </div>
+                <div>
+                    <h4>Discipline</h4>
+                    <h3>Game Development</h3>
+                </div>
+                <div>
+                    <h4>Related Experience</h4>
+                    <a href="index.html#experience"><span>Zer0ed: 100 Years Later</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALLERY -->
+        <div class="project-gallery">
+            <div class="gallery-frame">
+                <div class="gallery-track">
+                    <img src="assets/Zer0ed-day.png" alt="Pixel-art hex island: the squad's camp, a trail across the river, and an overgrown house to loot" data-title="The island"
+                        data-caption="Travel the hex map from camp, scavenge what the old world left behind — and watch your vitals as you go.">
+                    <img src="assets/Zer0ed-battle.png" alt="Pixel-art auto-battle: the squad faces purple mutants across hex tiles" data-title="Auto-battler"
+                        data-caption="Run into trouble and your squad fights it out in real time, tile by tile.">
+                    <img src="assets/Zer0ed-night.png" alt="Pixel-art hex island at night, lit by the campfire and house windows" data-title="Day and night"
+                        data-caption="A world clock turns day into night. Phases one to three are built; lore, saving, and polish are next.">
+                </div>
+            </div>
+            <div class="gallery-caption">
+                <div>
+                    <h4 class="gallery-count">01 / 03</h4>
+                    <h5 class="caption-title"></h5>
+                    <p class="caption-desc"></p>
+                </div>
+                <div class="gallery-controls">
+                    <div class="gallery-dots">
+                        <button type="button" aria-label="Slide 1"></button>
+                        <button type="button" aria-label="Slide 2"></button>
+                        <button type="button" aria-label="Slide 3"></button>
+                    </div>
+                    <button class="gallery-prev" type="button" aria-label="Previous slide"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                    </svg></button>
+                    <button class="gallery-next" type="button" aria-label="Next slide"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                    </svg></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT STORY -->
+        <div class="project-story">
+            <div class="story-heading">
+                <div>
+                    <h4>Project Story</h4>
+                    <h2>Contribution &amp; impact</h2>
+                </div>
+                <p>What I built, and what changed because of it.</p>
+            </div>
+
+            <div class="story-content">
+                <div class="contribution">
+                    <div class="contribution-top">
+                        <h3>My Contribution</h3>
+                        <h4>Solo build</h4>
+                    </div>
+                    <ol class="contribution-list">
+                        <li><span>01</span>
+                            <p>Built the hex-map world: movement, travel modes, a day-night clock, and points of interest.</p>
+                        </li>
+                        <li><span>02</span>
+                            <p>Designed survival, crafting, research, and base-building as connected systems.</p>
+                        </li>
+                        <li><span>03</span>
+                            <p>Made every number tunable through ScriptableObject data, not code.</p>
+                        </li>
+                        <li><span>04</span>
+                            <p>Wrote editor tools that set up, check, and generate game data in one click.</p>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="impact-card">
+                    <h4>Impact</h4>
+                    <p class="impact-statement">Balancing happens in data, not code — so the game can grow without being rewritten.</p>
+                    <div class="impact-stats">
+                        <div>
+                            <h3>3/4</h3>
+                            <span>Phases built</span>
+                        </div>
+                        <div>
+                            <h3>12</h3>
+                            <span>Planned milestones</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TECHNOLOGY -->
+        <div class="project-tech">
+            <div>
+                <h4>Technology</h4>
+                <p>Core tools behind the build.</p>
+            </div>
+            <div class="techstack">
+                <span>Unity 6</span>
+                <span>C#</span>
+                <span>URP 2D</span>
+                <span>Tilemap</span>
+                <span>Input System</span>
+                <span>ScriptableObjects</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREVIOUS / NEXT -->
+    <nav class="project-nav">
+        <div>
+            <a href="project-portfolio.html" class="nav-prev">
+                <h4><span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                    </svg></span>Previous Project</h4>
+                <h2>Personal Portfolio</h2>
+            </a>
+            <a href="project-ruta.html" class="nav-next">
+                <h4>Next Project<span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                    </svg></span></h4>
+                <h2>Ruta</h2>
+            </a>
+        </div>
+    </nav>
+
+    <h6 class="projects-footer">© 2026 Faisal D. Khan All rights reserved.</h6>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+    <script src="script/script_project_detail.js"></script>
+</body>
+
+</html>

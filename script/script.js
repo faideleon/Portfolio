@@ -118,8 +118,12 @@ const menuLinks = document.querySelectorAll('.mp-links a');
 
 menuLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
         const target = link.getAttribute('href');
+
+        // links to other pages (like projects.html) navigate normally
+        if (!target.startsWith('#')) return;
+
+        e.preventDefault();
 
         if (target === '#experience') {
 
