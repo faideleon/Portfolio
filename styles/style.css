@@ -1188,8 +1188,12 @@ body {
 }
 
 .pc-divider {
-    margin-top: 80px;
-    margin-bottom: 80px;
+    margin-top: 40px;
+    margin-bottom: 230px;
+}
+
+.pc-divider:last-of-type {
+    margin-bottom: 0;
 }
 
 .image-container.zer0ed .slider-track img {
@@ -1215,7 +1219,7 @@ body {
     color: white;
     padding: 20px 35px;
     background-color: rgba(0, 0, 0, 0.856);
-    margin-top: 60px;
+    margin-top: 120px;
     justify-content: center;
     display: flex;
     align-items: center;
