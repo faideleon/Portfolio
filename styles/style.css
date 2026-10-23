@@ -1178,6 +1178,28 @@ body {
     display: flex;
 }
 
+.pc-main.flip {
+    flex-direction: row-reverse;
+}
+
+.pc-main.flip .pc-main-image {
+    margin-left: 0;
+    margin-right: 60px;
+}
+
+.pc-divider {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.image-container.zer0ed .slider-track img {
+    object-fit: cover;
+}
+
+.image-container.ruta .preview-slider {
+    background-color: rgb(239, 238, 234);
+}
+
 .pc-main-hr {
     margin-top: 60px;
     border: none;
