@@ -99,11 +99,13 @@
     flex-direction: column;
 }
 
-
+html,
+body {
+    overflow-x: clip;
+}
 
 body {
     min-height: 100vh;
-    overflow-x: hidden;
     background-color: rgb(29, 30, 32);
 }
 
@@ -1864,4 +1866,61 @@ body {
     letter-spacing: 3px;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 900px) {
+    .secondary-container {
+        flex-direction: column;
+        padding: 120px 20px 40px;
+        gap: 40px;
+
+    }
+
+    .info h2,
+    .info h2 span {
+        font-size: clamp(56px, 14vw, 140px);
+    }
+
+    .info-h3 {
+        font-size: clamp(24px, 6vw, 60px);
+    }
+
+    .cursor {
+        height: 0.8em;
+    }
+
+    .info {
+        height: auto;
+        margin-bottom: 0;
+    }
+
+    .image-profile {
+        transform: translateY(-20px);
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        aspect-ratio: 5 / 6;
+
+    }
+
+    .main-container,
+    .nav-bar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .menu-panel {
+        width: 60vw;
+    }
+
+    .mp-links a {
+        font-size: clamp(36px, 8vw, 70px);
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-panel {
+        width: 100vw;
+        padding: 50px 30px;
+    }
 }
