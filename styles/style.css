@@ -556,8 +556,9 @@ body {
 
 }
 
+/* prev/next controls only show on tablets and phones (see max-width: 1024px) */
 .experience-nav {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 20px;
     margin-left: 15vw;
@@ -866,7 +867,6 @@ body {
     align-items: center;
     width: max-content;
     margin-bottom: 40px;
-    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .portfolio-showcase-underlay {
@@ -1933,6 +1933,32 @@ body {
     overflow-y: hidden;
 }
 
+@media (max-width: 1024px) {
+    /* not sticky here, so the heading block only needs to fit its content */
+    .experiences {
+        position: relative;
+        min-height: auto;
+        padding-top: 120px;
+    }
+
+    .career-archive {
+        transform: none;
+    }
+
+    .horizontal-section,
+    .experience-cardholder {
+        min-height: auto;
+    }
+
+    .experience-nav {
+        display: flex;
+    }
+
+    .card-container {
+        transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+}
+
 @media (max-width: 1280px) {
     .secondary-container {
         padding: 160px 6vw 80px 6vw;
@@ -2072,12 +2098,11 @@ body {
     }
 
     .career-archive {
-        margin-top: -400px;
-        width: calc(100% - 40px);
+        width: calc(100% - 15vw);
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
-        transform: translateY(-40px);
+        transform: none;
     }
 
     .card-container {
