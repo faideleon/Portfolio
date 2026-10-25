@@ -115,15 +115,18 @@ gsap.from('.experiences-h1', {
     }
 });
 
-gsap.from('.career-archive', {
-    opacity: 0,
-    y: "+=5",
-    scrollTrigger: {
-        trigger: '.experiences',
-        start: 'bottom bottom',
-        end: 'bottom 90%',
-        scrub: 1
-    }
+// desktop only: on phones the mid-scroll fade and sub-pixel shift render the text soft
+mm.add('(min-width: 1025px)', () => {
+    gsap.from('.career-archive', {
+        opacity: 0,
+        y: "+=5",
+        scrollTrigger: {
+            trigger: '.experiences',
+            start: 'bottom bottom',
+            end: 'bottom 90%',
+            scrub: 1
+        }
+    });
 });
 
 const boxes = document.querySelectorAll('.card');

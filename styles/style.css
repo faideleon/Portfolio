@@ -1932,11 +1932,23 @@ body {
 }
 
 @media (max-width: 1024px) {
+
     /* not sticky here, so the heading block only needs to fit its content */
     .experiences {
         position: relative;
         min-height: auto;
         padding-top: 120px;
+    }
+
+    /* the hero is taller than the screen here; if it stuck, the next section
+       would slide over the photo and hide the name bar before you reach it */
+    .hero {
+        position: relative;
+    }
+
+    /* tuck the curved top over the hero so the curve shows against it */
+    .information {
+        margin-top: -100px;
     }
 
     .career-archive {
@@ -2026,6 +2038,10 @@ body {
 
 @media (max-width: 900px) {
 
+    .name-bar {
+        bottom: 50px;
+    }
+
     .secondary-container {
         flex-direction: column;
         padding: 120px 20px 40px;
@@ -2076,6 +2092,7 @@ body {
 
     /* ABOUT */
     .information {
+        margin-top: -50px;
         padding: 0 20px;
         border-top-left-radius: 250% 50px;
         border-top-right-radius: 250% 50px;
@@ -2327,6 +2344,12 @@ body {
 }
 
 @media (max-width: 600px) {
+
+    .name-bar {
+        bottom: 50px;
+    }
+
+
     .menu-panel {
         width: 100vw;
         padding: 50px 30px;
