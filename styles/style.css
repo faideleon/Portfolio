@@ -502,7 +502,6 @@ body {
 
 
 .career-column {
-    filter: blur(0.3px);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -521,7 +520,6 @@ body {
 }
 
 .career-archive p {
-    filter: blur(0.3px);
     letter-spacing: 2px;
     color: rgb(139, 136, 136);
     font-family: 'SFP';
