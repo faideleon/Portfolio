@@ -2,6 +2,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 window.addEventListener('load', () => ScrollTrigger.refresh());
+
+// on phones the hero is taller than the screen; stick it only once its bottom
+// (photo + name bar) is in view, so the next section can't cover the name bar early
+const hero = document.querySelector('.hero');
+function setHeroStickyTop() {
+    hero.style.top = `${Math.min(0, window.innerHeight - hero.offsetHeight)}px`;
+}
+setHeroStickyTop();
+window.addEventListener('resize', setHeroStickyTop);
 const track = document.querySelector('.card-container');
 const experienceCards = track.querySelectorAll('.card');
 const experiencePrev = document.querySelector('.experience-prev');
