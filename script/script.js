@@ -2,15 +2,51 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 window.addEventListener('load', () => ScrollTrigger.refresh());
-// experience cards: page scrolls normally, prev/next buttons step through the cards
 const track = document.querySelector('.card-container');
 const experienceCards = track.querySelectorAll('.card');
 const experiencePrev = document.querySelector('.experience-prev');
 const experienceNext = document.querySelector('.experience-next');
 const experienceCount = document.querySelector('.experience-count');
+const distance = () => track.scrollWidth - window.innerWidth;
 let experienceIndex = 0;
+let experienceCarousel = false;
+
+const mm = gsap.matchMedia();
+
+// desktop: pin the section and scroll the cards sideways
+mm.add('(min-width: 1025px)', () => {
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.horizontal-section',
+            pin: true,
+            scrub: 1,
+            end: () => `+=${distance()}`,
+            invalidateOnRefresh: true
+        }
+    });
+
+    tl.to({}, { duration: 2 });
+    tl.to(track, {
+        x: () => -distance(),
+        ease: 'none',
+        duration: 2,
+    });
+});
+
+// tablets and phones: page scrolls normally, prev/next buttons step through the cards
+mm.add('(max-width: 1024px)', () => {
+    experienceCarousel = true;
+    showExperience(0);
+
+    return () => {
+        experienceCarousel = false;
+        track.style.transform = '';
+    };
+});
 
 function showExperience(index) {
+    if (!experienceCarousel) return;
+
     experienceIndex = Math.max(0, Math.min(index, experienceCards.length - 1));
     const offset = experienceCards[experienceIndex].offsetLeft - experienceCards[0].offsetLeft;
     track.style.transform = `translateX(${-offset}px)`;
@@ -34,8 +70,6 @@ track.addEventListener('touchend', (e) => {
     const deltaX = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(deltaX) > 50) showExperience(experienceIndex + (deltaX < 0 ? 1 : -1));
 });
-
-showExperience(0);
 
 gsap.to('.overlay-holder', {
     marginTop: '-60vh',
