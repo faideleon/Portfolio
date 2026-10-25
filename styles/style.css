@@ -531,7 +531,7 @@ body {
 .horizontal-section {
     position: relative;
     z-index: 3;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     background-color: transparent;
 
@@ -547,12 +547,70 @@ body {
 
     z-index: 4;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     overflow: hidden;
 
+}
+
+.experience-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: 15vw;
+    margin-bottom: 60px;
+}
+
+.experience-count {
+    font-family: 'SFP';
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgb(139, 136, 136);
+}
+
+.experience-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.experience-prev,
+.experience-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: 44px;
+    padding: 0;
+    border: 1px solid rgba(231, 227, 223, 0.25);
+    border-radius: 999px;
+    cursor: pointer;
+    background-color: rgba(231, 227, 223, 0.06);
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.experience-prev:hover:not(:disabled),
+.experience-next:hover:not(:disabled) {
+    background-color: rgba(231, 227, 223, 0.2);
+}
+
+.experience-prev:disabled,
+.experience-next:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.experience-prev svg,
+.experience-next svg {
+    height: 20px;
+    width: 20px;
+}
+
+.experience-prev svg {
+    transform: rotate(180deg);
 }
 
 .card {
@@ -807,7 +865,8 @@ body {
     gap: 40px;
     align-items: center;
     width: max-content;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .portfolio-showcase-underlay {
@@ -1868,7 +1927,81 @@ body {
     color: rgba(0, 0, 0, 0.4);
 }
 
+.graph-content-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+@media (max-width: 1280px) {
+    .secondary-container {
+        padding: 160px 6vw 80px 6vw;
+        gap: 40px;
+    }
+
+    .info h2,
+    .info h2 span {
+        font-size: 9vw;
+    }
+
+    .info-h3 {
+        font-size: 3.6vw;
+    }
+
+    .cursor {
+        height: 0.8em;
+    }
+
+    .image-profile {
+        flex-shrink: 0;
+        width: 34vw;
+        height: 41vw;
+    }
+
+    .experiences-h1 {
+        font-size: 21vw;
+    }
+
+    .card {
+        width: 70vw;
+    }
+
+    .card-info {
+        padding: 40px 20px 40px 40px;
+    }
+
+    .card-info h1 {
+        font-size: 3.4vw;
+    }
+
+    .card-info h3 {
+        margin-top: 30px;
+    }
+
+    .about-card {
+        font-size: 13px;
+        margin-bottom: 30px;
+    }
+
+    .portfolio-container,
+    .pc-portfolio,
+    .github-contributions {
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+
+    .gc-content-main {
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas: "date streak active" "graph graph graph";
+    }
+
+    .gc-content-main .graph {
+        margin-left: 0;
+    }
+}
+
 @media (max-width: 900px) {
+
     .secondary-container {
         flex-direction: column;
         padding: 120px 20px 40px;
@@ -1916,11 +2049,283 @@ body {
     .mp-links a {
         font-size: clamp(36px, 8vw, 70px);
     }
+
+    /* ABOUT */
+    .information {
+        padding: 0 20px;
+        border-top-left-radius: 250% 50px;
+        border-top-right-radius: 250% 50px;
+    }
+
+    .after-hero-h2 .line span {
+        font-size: clamp(26px, 6.5vw, 48px);
+        letter-spacing: -0.5px;
+    }
+
+    .infinite-techstack {
+        width: 100%;
+    }
+
+    /* EXPERIENCES */
+    .experiences-h1 {
+        display: none;
+    }
+
+    .career-archive {
+        margin-top: -400px;
+        width: calc(100% - 40px);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        transform: translateY(-40px);
+    }
+
+    .card-container {
+        margin-top: 40px;
+        padding-left: 7.5vw;
+        padding-right: 7.5vw;
+        gap: 20px;
+    }
+
+    .experience-nav {
+        margin-left: 7.5vw;
+    }
+
+    .card {
+        width: 85vw;
+        height: 80vh;
+        flex-direction: column-reverse;
+    }
+
+    .card-image {
+        flex: 0 0 34%;
+        border-left: 1px solid rgb(231, 227, 223);
+        border-bottom: 1px solid rgb(49, 48, 48);
+    }
+
+    .card-info {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+        gap: 6px;
+        padding: 24px 20px;
+    }
+
+    .card-top {
+        gap: 16px;
+        font-size: 7px;
+    }
+
+    .card-info h1 {
+        font-size: clamp(18px, 5.5vw, 36px);
+    }
+
+    .card-info h3 {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .about-card {
+        font-size: 11px;
+        line-height: 1.5;
+        margin-bottom: 16px;
+    }
+
+    .skills {
+        font-size: 14px;
+    }
+
+    .skills hr {
+        margin-top: 10px;
+    }
+
+    .skills-container {
+        gap: 8px;
+        padding-right: 0;
+    }
+
+    .skills-container hr {
+        margin-top: 6px;
+    }
+
+    .skills-highlights,
+    .skills-highlights.one {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .skill-line {
+        margin-top: 4px;
+        font-size: 10px;
+    }
+
+    .skill-line p {
+        font-size: 9px;
+    }
+
+    /* SELECTED PROJECTS */
+    .portfolio-showcase {
+        border-radius: 30px 30px 0 0;
+    }
+
+    .portfolio-container,
+    .pc-portfolio,
+    .github-contributions {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .portfolio-nav-bar {
+        padding-top: 12vh;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .pnb span {
+        font-size: 24px;
+    }
+
+    .pc-main,
+    .pc-main.flip {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .pc-main-image,
+    .pc-main.flip .pc-main-image {
+        margin: 0;
+    }
+
+    .pc-main-info {
+        margin-top: 0;
+    }
+
+    .image-container.pc {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .pc-main-info h1 {
+        font-size: 30px;
+    }
+
+    .pc-divider {
+        margin-top: 50px;
+        margin-bottom: 90px;
+    }
+
+    .pc-viewprojects {
+        margin-top: 60px;
+    }
+
+    /* GITHUB CONTRIBUTIONS */
+    .watermark {
+        font-size: 22vw;
+    }
+
+    .gc-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .gc-navbar-right {
+        text-align: left;
+    }
+
+    .gc-navbar-left h2 {
+        font-size: 28px;
+    }
+
+    .gc-content-main {
+        margin-top: 50px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "date date" "streak active" "graph graph";
+    }
+
+    .gc-content-main .graph {
+        padding: 24px 12px;
+        min-width: 0;
+    }
+
+    .graph-content-container {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .graph hr,
+    .graph-desc {
+        width: 100%;
+    }
+
+    /* CONTACT */
+    .watermark.contact {
+        font-size: 40vw;
+    }
+
+    .contact-h1 {
+        font-size: 17vw;
+        letter-spacing: 0;
+    }
+
+    .contact-h1 span {
+        letter-spacing: -0.067em;
+    }
+
+    .contact-h1 .contact-h1-apost {
+        letter-spacing: -0.2em;
+    }
+
+    .ch1-span {
+        letter-spacing: -0.033em;
+        transform: translateY(-0.13em);
+    }
+
+    .contact-place {
+        top: 100px;
+    }
+
+    .contact-email {
+        font-size: 18px;
+        letter-spacing: -1px;
+    }
+
+    .contact-links {
+        flex-wrap: wrap;
+        gap: 18px;
+        padding: 0 20px;
+    }
+
+    .contact-footer {
+        width: max-content;
+        bottom: 30px;
+    }
 }
 
 @media (max-width: 600px) {
     .menu-panel {
         width: 100vw;
         padding: 50px 30px;
+    }
+
+    .nav-bar {
+        padding-top: 20px;
+    }
+
+    .about-card {
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .gc-content-main>div {
+        padding: 18px;
+    }
+
+    .date h3 {
+        font-size: 40px;
     }
 }
