@@ -1940,11 +1940,7 @@ body {
         padding-top: 120px;
     }
 
-    /* the hero is taller than the screen here; if it stuck, the next section
-       would slide over the photo and hide the name bar before you reach it */
-    .hero {
-        position: relative;
-    }
+
 
     /* tuck the curved top over the hero so the curve shows against it */
     .information {
