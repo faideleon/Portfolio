@@ -618,7 +618,8 @@ body {
     flex-shrink: 0;
     display: flex;
     background-color: white;
-    height: 75vh;
+    /* grow with the copy on short screens instead of clipping the highlights */
+    min-height: 75vh;
     width: 60vw;
 }
 
@@ -639,6 +640,8 @@ body {
 
     flex: 0 0 38%;
     overflow: hidden;
+    /* the copy sets the card height, not the screenshots */
+    contain: size;
     border-right: 1px solid rgb(231, 227, 223);
     border-left: 1px solid rgb(49, 48, 48);
     border-bottom: 1px solid rgb(231, 227, 223);
@@ -862,7 +865,7 @@ body {
     padding-right: 17.5vw;
     display: flex;
     gap: 40px;
-    align-items: center;
+    align-items: stretch;
     width: max-content;
     margin-bottom: 40px;
 }
@@ -2369,5 +2372,30 @@ body {
 
     .date h3 {
         font-size: 40px;
+    }
+}
+
+/* short desktop screens: tighten the experience cards so they fit under the pin */
+@media (min-width: 901px) and (max-height: 820px) {
+    .card-container {
+        margin-top: 40px;
+    }
+
+    .card-info {
+        gap: 6px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .card-info h1 {
+        font-size: clamp(28px, 3vw, 40px);
+    }
+
+    .card-info h3 {
+        margin-top: 16px;
+    }
+
+    .about-card {
+        margin-bottom: 16px;
     }
 }
