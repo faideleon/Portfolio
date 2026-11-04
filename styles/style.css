@@ -2345,7 +2345,7 @@ body {
 @media (max-width: 600px) {
 
     .main-container {
-        transform: translateY(-50px);
+        transform: translateY(-70px);
     }
 
     .name-bar {
