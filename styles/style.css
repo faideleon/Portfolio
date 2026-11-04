@@ -2344,6 +2344,10 @@ body {
 
 @media (max-width: 600px) {
 
+    .main-container {
+        transform: translateY(-50px);
+    }
+
     .name-bar {
         bottom: 50px;
     }
