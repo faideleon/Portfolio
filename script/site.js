@@ -107,7 +107,7 @@ document.querySelectorAll(".cell-portrait[data-src]").forEach((el) => mountCellP
     reveal: el.hasAttribute("data-reveal"),
 }));
 
-document.querySelectorAll(".thumb").forEach((thumb) =>
+document.querySelectorAll(".thumb:has(.thumb-ascii)").forEach((thumb) =>
     mountAsciiThumb(thumb, { trigger: thumb.closest("a, .tile") || thumb }));
 
 document.querySelectorAll(".glyph-word").forEach((el) => mountLettering(el, {
