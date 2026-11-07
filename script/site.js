@@ -7,6 +7,7 @@ import { mountScene } from "./ascii/scene.js";
 import { mountCellPortrait, mountAsciiThumb } from "./ascii/image.js";
 import { mountLettering } from "./ascii/lettering.js";
 import { mountHeatmap } from "./ascii/heatmap.js";
+import { mountDither } from "./ascii/dither.js";
 
 /* ---------- nav: border once scrolled, hide on scroll down, show on scroll up ---------- */
 const nav = document.querySelector(".site-nav");
@@ -119,7 +120,10 @@ document.querySelectorAll(".glyph-word").forEach((el) => mountLettering(el, {
     align: el.dataset.align || "center",
 }));
 
+document.querySelectorAll(".dither").forEach((el) => mountDither(el));
+
 document.querySelectorAll(".heatmap").forEach((el) => mountHeatmap(el, {
+    ink: el.hasAttribute("data-ink"),
     onStats: (s) => {
         for (const [k, v] of Object.entries(s)) document.querySelectorAll(`[data-stat="${k}"]`).forEach((n) => (n.textContent = v));
     },

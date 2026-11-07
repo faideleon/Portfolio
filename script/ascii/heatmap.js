@@ -8,10 +8,13 @@ import { register, fitCanvas, reduceMotion } from "./engine.js";
 
 const RAMP = ["#1c1830", "#4a3a88", "#b05a88", "#f8a060", "#ffc478"];
 const SIDE = [0.42, 0.62, 0.76, 0.88, 0.96];
+// ink mode: near-black squares at five strengths, for a light (amber) card
+const INK = ["rgba(26,14,6,.12)", "rgba(26,14,6,.36)", "rgba(26,14,6,.56)", "rgba(26,14,6,.76)", "rgba(26,14,6,.94)"];
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const levelOf = (n) => (n <= 0 ? 0 : n >= 4 ? 4 : n);
 
-export async function mountHeatmap(el, { user = "faideleon", onStats } = {}) {
+export async function mountHeatmap(el, { user = "faideleon", onStats, ink = false } = {}) {
+    const ramp = ink ? INK : RAMP;
     const canvas = el.querySelector("canvas");
     const tip = el.querySelector(".heatmap-tip");
     const ctx = canvas.getContext("2d");
@@ -50,7 +53,7 @@ export async function mountHeatmap(el, { user = "faideleon", onStats } = {}) {
         const { labelW, labelH, cell, dpr } = geo;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.font = `${10 * dpr}px "Martian Mono", ui-monospace, monospace`;
-        ctx.fillStyle = "rgba(255,255,255,.38)";
+        ctx.fillStyle = ink ? "rgba(26,14,6,.6)" : "rgba(255,255,255,.38)";
         ctx.textBaseline = "middle";
         ["Mon", "Wed", "Fri"].forEach((l, i) => ctx.fillText(l, 0, labelH + cell * (i * 2 + 1.5)));
         let lastMonth = -1;
@@ -61,7 +64,7 @@ export async function mountHeatmap(el, { user = "faideleon", onStats } = {}) {
         });
         const shown = reveal * (cols + 6);
         for (let lv = 0; lv < 5; lv++) {
-            ctx.fillStyle = RAMP[lv];
+            ctx.fillStyle = ramp[lv];
             ctx.beginPath();
             days.forEach((d, i) => {
                 if (levelOf(d.count) !== lv) return;

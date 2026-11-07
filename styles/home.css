@@ -175,7 +175,8 @@
     }
 }
 
-/* phones: the scene fills the hero behind the text */
+/* phones: the scene covers a band at the top of the hero and fades into the text below.
+   (stretching it to full screen height made each cell ~8px and the art turned into loose squares) */
 @media (max-width: 900px) {
     .hero {
         min-height: 100vh;
@@ -190,7 +191,8 @@
 
     .ascii-card {
         position: absolute;
-        inset: 0;
+        inset: 0 0 auto;
+        height: min(100%, clamp(320px, 78vw, 560px));
         z-index: 0;
         border: 0;
         max-width: none;
@@ -207,7 +209,7 @@
         position: absolute;
         inset: 0;
         pointer-events: none;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 18%, rgba(0, 0, 0, 0.78) 36%, rgba(0, 0, 0, 0.92) 55%, #000 100%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 24%, rgba(0, 0, 0, 0.25) 62%, #000 100%);
     }
 
     /* the green dot moves into the "Open to work" stat on phones */
@@ -288,10 +290,171 @@
     }
 }
 
-/* ---------- activity ---------- */
+/* ---------- activity: GitHub card ---------- */
 
-.activity .stats {
-    margin-bottom: 24px;
+.activity {
+    --card: #f8a060;
+    --card-ink: #1a0e06;
+    --card-ink-2: rgba(26, 14, 6, 0.66);
+    --card-line: rgba(26, 14, 6, 0.18);
+}
+
+.gh-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: end;
+    gap: 24px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--ink-2);
+}
+
+.gh-top > span {
+    padding-bottom: 14px;
+}
+
+.gh-top > span:last-child {
+    text-align: right;
+}
+
+.gh-pines {
+    display: block;
+    width: clamp(220px, 30vw, 380px);
+    height: auto;
+    margin-bottom: -1px;
+    fill: var(--card);
+}
+
+.gh-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3vw, 36px);
+    padding: clamp(24px, 4vw, 52px) clamp(20px, 4vw, 56px) clamp(28px, 4vw, 48px);
+    background: var(--card);
+    color: var(--card-ink);
+    border-radius: 18px 18px 0 0;
+}
+
+.gh-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+}
+
+.gh-body .eyebrow,
+.gh-body .stats dd {
+    color: var(--card-ink-2);
+}
+
+.gh-body .title {
+    color: var(--card-ink);
+}
+
+.gh-body .stats {
+    grid-template-columns: repeat(3, auto);
+    padding: 0;
+    border: 0;
+}
+
+.gh-body .heatmap-scroll {
+    padding: 0;
+    margin: 0 -4px;
+}
+
+.gh-body .heatmap-tip {
+    background: var(--card-ink);
+    color: var(--card);
+}
+
+.gh-body .heatmap.is-error::after {
+    color: var(--card-ink-2);
+}
+
+.gh-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px clamp(20px, 4vw, 56px);
+    padding-top: clamp(20px, 3vw, 28px);
+    border-top: 1px solid var(--card-line);
+}
+
+.gh-links a,
+.gh-links button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 32px;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--card-ink);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gh-links svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    flex: none;
+}
+
+@media (hover: hover) {
+    .gh-links a:hover,
+    .gh-links button:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+}
+
+.gh-links .copied {
+    font-weight: 600;
+}
+
+.dither {
+    position: relative;
+    height: clamp(170px, 24vw, 340px);
+    font-family: var(--font-body);
+}
+
+.dither canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 700px) {
+    .gh-top {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .gh-top > span {
+        padding-bottom: 0;
+    }
+
+    .gh-top > span:last-child {
+        display: none;
+    }
+
+    .gh-body .stats {
+        grid-template-columns: repeat(3, auto);
+        gap: 18px 28px;
+    }
+
+    .gh-links {
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .heatmap-scroll {
@@ -330,26 +493,6 @@
     pointer-events: none;
 }
 
-.legend {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--ink-3);
-}
-
-.legend i {
-    width: 11px;
-    height: 11px;
-    display: grid;
-    place-items: center;
-}
-
-.legend i::before {
-    content: '';
-    width: calc(var(--s) * 100%);
-    height: calc(var(--s) * 100%);
-    background: var(--c);
-}
 
 /* ---------- contact ---------- */
 
@@ -361,13 +504,8 @@
     margin-bottom: 20px;
 }
 
-.contact-word {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    height: clamp(170px, 24vw, 340px);
-    pointer-events: auto;
-    margin-bottom: clamp(32px, 5vw, 64px);
+.contact-title {
+    margin-bottom: clamp(32px, 5vw, 56px);
 }
 
 .contact-grid {
@@ -448,7 +586,4 @@
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .contact-word {
-        height: clamp(200px, 60vw, 300px);
-    }
 }

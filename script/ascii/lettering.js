@@ -21,10 +21,10 @@ export function mountLettering(el, { cellPx = 10, alpha = 1, weight = 800, wake:
         size = fitCanvas(canvas, el);
         const narrow = el.dataset.textNarrow && size.cssW < narrowAt;
         const lines = (narrow ? el.dataset.textNarrow : el.dataset.text).split("|");
-        // keep at least ~6 cells per letter so narrow screens still read the word
+        // keep letters detailed at any size: at least ~7 cells across and ~13 cells tall per letter
         const longest = Math.max(...lines.map((l) => l.length));
-        const cellCss = Math.max(3, Math.min(cellPx, size.cssW / (longest * 6)));
-        const cell = cellCss * size.dpr;
+        const cellCss = Math.max(2.5, Math.min(cellPx, size.cssW / (longest * 7), size.cssH / (lines.length * 13)));
+        const cell = Math.max(2, Math.round(cellCss * size.dpr));   // whole device pixels: every square the same size
         const cols = Math.max(4, Math.floor(size.w / cell)), rows = Math.max(2, Math.floor(size.h / cell));
         // draw the text into a cols x rows mask
         const S = 4, mw = cols * S, mh = rows * S;
@@ -54,7 +54,8 @@ export function mountLettering(el, { cellPx = 10, alpha = 1, weight = 800, wake:
         }
         const tone = on.map((i) => Math.round(((i % cols) - minX) / Math.max(1, maxX - minX) * (TONES - 1)));
         const pos = on.map((i) => ((i % cols) - minX) / Math.max(1, maxX - minX) * 0.8 + ((i / cols) | 0) / rows * 0.2);
-        g = { cols, rows, cw: size.w / cols, ch: size.h / rows, on, side, tone, pos };
+        const gx = align === "left" ? 0 : Math.floor((size.w - cols * cell) / 2), gy = Math.floor((size.h - rows * cell) / 2);
+        g = { cols, rows, cw: cell, ch: cell, gx, gy, on, side, tone, pos };
         if (withWake && !wake) wake = createWake(cols, rows, { radius: 5, maxD: 1.8, strength: 0.2 });
         paint();
     }
@@ -63,7 +64,7 @@ export function mountLettering(el, { cellPx = 10, alpha = 1, weight = 800, wake:
         if (!g) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = alpha;
-        const { cols, cw, ch, on, side, tone, pos } = g;
+        const { cols, cw, ch, gx, gy, on, side, tone, pos } = g;
         const band = reduceMotion ? -9 : sweepPos(t, 6, 1.8);
         for (let tn = 0; tn < TONES; tn++) {
             ctx.fillStyle = colors[tn];
@@ -74,7 +75,8 @@ export function mountLettering(el, { cellPx = 10, alpha = 1, weight = 800, wake:
                 const d = Math.abs(pos[k] - band);
                 const s = d < 0.1 ? Math.min(1, side[k] + 0.14 * (1 - d / 0.1) ** 2) : side[k];
                 const ox = wake ? wake.dx[i] : 0, oy = wake ? wake.dy[i] : 0;
-                ctx.rect((x + ox) * cw + (cw * (1 - s)) / 2, (y + oy) * ch + (ch * (1 - s)) / 2, cw * s, ch * s);
+                const sq = Math.max(1, Math.min(cw - 1, Math.round(cw * s)));
+                ctx.rect(gx + Math.round((x + ox) * cw) + ((cw - sq) >> 1), gy + Math.round((y + oy) * ch) + ((cw - sq) >> 1), sq, sq);
             }
             ctx.fill();
         }
@@ -100,7 +102,7 @@ export function mountLettering(el, { cellPx = 10, alpha = 1, weight = 800, wake:
         el.addEventListener("pointermove", (e) => {
             if (!g) return;
             const r = canvas.getBoundingClientRect(), s = size.dpr;
-            wake.move(((e.clientX - r.left) * s) / g.cw, ((e.clientY - r.top) * s) / g.ch);
+            wake.move(((e.clientX - r.left) * s - g.gx) / g.cw, ((e.clientY - r.top) * s - g.gy) / g.ch);
         }, { passive: true });
         el.addEventListener("pointerleave", () => wake?.leave());
     }
