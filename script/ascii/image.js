@@ -64,7 +64,7 @@ const REVEAL_MS = 420;
  *  cellPx: cell size in CSS px, intro: fade up from the bottom, shimmer: a soft band of light sweeps up the figure,
  *  wake: cursor pushes cells, reveal: the real photo cross-fades in on hover (hover-capable pointers only)
  */
-export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, sideScale = 1, intro = false, shimmer = false, wake: withWake = false, reveal = false } = {}) {
+export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, sideScale = 1, sharpen = 0, intro = false, shimmer = false, wake: withWake = false, reveal = false } = {}) {
     const canvas = el.querySelector("canvas");
     const ctx = canvas.getContext("2d");
     const photo = el.querySelector(".cell-photo");
@@ -97,8 +97,22 @@ export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, sideS
         figure.sort((p, q) => p - q);
         const lo = figure[Math.floor(figure.length * 0.05)] ?? 0, hi = figure[Math.floor(figure.length * 0.95)] ?? 1;
         const level = new Int8Array(cols * rows).fill(-1);
+        // unsharp mask: push each cell away from its neighbourhood average so eyes, brows, nose and
+        // mouth separate from the skin instead of melting into one flat tone
+        const blur = new Float32Array(vals.length);
+        for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+            let sum = 0, n = 0;
+            for (let j = -2; j <= 2; j++) for (let k = -2; k <= 2; k++) {
+                const yy = y + j, xx = x + k;
+                if (yy < 0 || yy >= rows || xx < 0 || xx >= cols || !inside[yy * cols + xx]) continue;
+                sum += vals[yy * cols + xx]; n++;
+            }
+            blur[y * cols + x] = n ? sum / n : 0;
+        }
         for (let c = 0; c < vals.length; c++) if (inside[c]) {
-            const v = Math.min(1, Math.max(0, (vals[c] - lo) / (hi - lo || 1)));
+            let v = Math.min(1, Math.max(0, (vals[c] - lo) / (hi - lo || 1)));
+            const b = Math.min(1, Math.max(0, (blur[c] - lo) / (hi - lo || 1)));
+            v = Math.min(1, Math.max(0, v + sharpen * (v - b)));
             level[c] = Math.round(v * (LEVELS - 1));
         }
         const delay = new Float32Array(cols * rows);
