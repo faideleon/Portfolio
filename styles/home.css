@@ -1,0 +1,454 @@
+/* =========================================================================
+   Home page: hero, about, work, activity, contact.
+   ========================================================================= */
+
+/* ---------- hero ---------- */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-h) + 40px) 0 80px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 72px);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.hero-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.hero-title h1 {
+    white-space: nowrap;
+}
+
+.hero-role {
+    font-family: var(--font-mono);
+    font-size: clamp(15px, 1.4vw, 20px);
+    margin-top: -6px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.hero .stats {
+    margin-top: 6px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 0.42em;
+    height: 0.85em;
+    margin-left: 0.12em;
+    transform: translateY(0.1em);
+    background: rgba(255, 255, 255, 0.85);
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* halftone portraits (drawn by script/ascii/image.js) */
+.halftone {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.halftone canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.halftone.is-fallback {
+    background: url('../assets/avatar-source.webp') center 10% / cover no-repeat;
+    filter: grayscale(1) contrast(1.2);
+}
+
+.halftone-chip {
+    flex: none;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+}
+
+/* the scene card */
+.ascii-card {
+    background: #000;
+    overflow: hidden;
+}
+
+.ascii-stage {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    overflow: hidden;
+    touch-action: pan-y;
+}
+
+.ascii-stage canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* hero text fades in once the scene's horizon has appeared (class added by scene.js) */
+.hero .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition-delay: calc(300ms + var(--i, 0) * 60ms);
+}
+
+.hero.hero-ready .reveal {
+    opacity: 1;
+    transform: none;
+}
+
+@media (scripting: none) {
+    .hero .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero .reveal {
+        transition: none;
+    }
+
+    .cursor {
+        animation: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ascii-card {
+        max-width: 760px;
+    }
+}
+
+/* phones: the scene fills the hero behind the text */
+@media (max-width: 900px) {
+    .hero {
+        align-items: flex-end;
+        padding-bottom: 56px;
+    }
+
+    .hero-grid {
+        position: static;
+    }
+
+    .ascii-card {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        border: 0;
+        max-width: none;
+    }
+
+    .ascii-stage {
+        position: absolute;
+        inset: 0;
+        aspect-ratio: auto;
+    }
+
+    .ascii-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 18%, rgba(0, 0, 0, 0.78) 36%, rgba(0, 0, 0, 0.92) 55%, #000 100%);
+    }
+
+    .ascii-card .art-caption {
+        position: absolute;
+        z-index: 1;
+        top: calc(var(--nav-h) + 8px);
+        right: var(--gutter);
+        min-height: 0;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .ascii-card .caption-name {
+        display: none;
+    }
+
+    .hero-title {
+        gap: 14px;
+    }
+
+    .halftone-chip {
+        width: 54px;
+        height: 54px;
+    }
+
+    .hero-title h1 {
+        font-size: clamp(26px, 8vw, 48px);
+        white-space: normal;
+    }
+}
+
+/* ---------- about ---------- */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    gap: clamp(32px, 6vw, 96px);
+    align-items: start;
+    padding-top: clamp(40px, 7vw, 110px);
+}
+
+.portrait .halftone {
+    aspect-ratio: 360 / 470;
+    background: #000;
+    cursor: crosshair;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.about-text .title {
+    font-size: clamp(22px, 2.4vw, 36px);
+    line-height: 1.2;
+}
+
+.kv {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+}
+
+.kv div {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.kv div:nth-child(odd) {
+    padding-right: 20px;
+}
+
+.kv dt {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+.kv dd {
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+@media (max-width: 800px) {
+    .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .portrait {
+        max-width: 360px;
+    }
+}
+
+/* ---------- activity ---------- */
+
+.activity .stats {
+    margin-bottom: 24px;
+}
+
+.heatmap-scroll {
+    overflow-x: auto;
+    padding: 20px;
+    scrollbar-width: thin;
+}
+
+.heatmap {
+    position: relative;
+    min-width: 720px;
+}
+
+.heatmap canvas {
+    display: block;
+    width: 100%;
+}
+
+.heatmap.is-error::after {
+    content: 'Could not load GitHub activity right now.';
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+}
+
+.heatmap-tip {
+    position: absolute;
+    z-index: 2;
+    transform: translate(-50%, calc(-100% - 8px));
+    padding: 6px 10px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ink-3);
+}
+
+.legend i {
+    width: 11px;
+    height: 11px;
+    display: grid;
+    place-items: center;
+}
+
+.legend i::before {
+    content: '';
+    width: calc(var(--s) * 100%);
+    height: calc(var(--s) * 100%);
+    background: var(--c);
+}
+
+/* ---------- contact ---------- */
+
+.contact {
+    padding-bottom: clamp(80px, 10vw, 140px);
+}
+
+.contact .eyebrow:first-child {
+    margin-bottom: 20px;
+}
+
+.contact-word {
+    position: relative;
+    inset: auto;
+    height: clamp(170px, 24vw, 340px);
+    pointer-events: auto;
+    margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(32px, 6vw, 96px);
+    align-items: start;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.pill-lg {
+    height: 52px;
+    padding: 0 20px;
+    font-size: clamp(13px, 1.4vw, 17px);
+}
+
+.local {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-2);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+}
+
+.contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: #000;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font: 15px/1.5 var(--font-body);
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--ink);
+}
+
+.form-foot {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.form-foot small {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+}
+
+@media (max-width: 800px) {
+    .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .contact-word {
+        height: clamp(200px, 60vw, 300px);
+    }
+}

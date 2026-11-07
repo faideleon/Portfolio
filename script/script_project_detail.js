@@ -51,8 +51,9 @@ if (galleryTrack) {
         nextButton.addEventListener('click', () => showSlide(currentSlide + 1));
     }
 
-    // arrow keys
+    // arrow keys (not while typing in a field)
     window.addEventListener('keydown', (e) => {
+        if (e.target.closest('input, textarea')) return;
         if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
         if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
     });
@@ -99,21 +100,6 @@ document.querySelectorAll('.impact-stats h3').forEach((stat) => {
         }
     });
 });
-
-
-
-// FADE BETWEEN PAGES
-document.querySelectorAll('a[href$=".html"]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.body.classList.add('page-leaving');
-        setTimeout(() => {
-            window.location.href = link.href;
-        }, 300);
-    });
-});
-
-window.addEventListener('pageshow', () => document.body.classList.remove('page-leaving'));
 
 
 
@@ -168,23 +154,3 @@ gsap.from('.impact-card', {
         scrub: 1
     }
 });
-
-
-
-// 1. Initialize Lenis Smooth Scroll
-const lenis = new Lenis({
-    duration: 2, // Scroll ease length in seconds (higher = smoother & slower)
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential ease-out curve
-    smoothWheel: true
-});
-
-// 2. Sync Lenis scroll updates with GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-
-// 3. Drive Lenis through GSAP's internal ticker (frame update loop)
-gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-});
-
-// 4. Disable GSAP lag smoothing
-gsap.ticker.lagSmoothing(0);

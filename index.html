@@ -6,703 +6,319 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Faisal D. Khan — full-stack developer in Baguio City, building interfaces, databases, and data-driven systems.">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Martian+Mono:wght@100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23000%27/%3E%3Crect x=%271.5%27 y=%271.5%27 width=%2729%27 height=%2729%27 fill=%27none%27 stroke=%27%23fff%27 stroke-opacity=%27.5%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27monospace%27 font-size=%2717%27 fill=%27%23fff%27 text-anchor=%27middle%27%3EF%3C/text%3E%3C/svg%3E">
     <title>Faisal | Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/base.css?v=2">
+    <link rel="stylesheet" href="styles/home.css?v=2">
 </head>
 
 <body>
-    <div class="menu-panel">
-        <div class="mp-links">
-            <a href="#">HOME <span>01</span></a>
-            <a href="#about">ABOUT <span>02</span></a>
-            <a href="#experience">EXPERIENCE <span>03</span></a>
-            <a href="projects.html">PROJECTS <span>04</span></a>
-            <a href="#contact">CONTACTS <span>05</span></a>
+    <nav class="site-nav" aria-label="Main">
+        <div class="wrap">
+            <a href="#top" class="nav-brand"><span class="nav-mark">F</span>Faisal / Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#activity">Activity</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- TODO: add your resume link, then uncomment
+                <li><a class="btn" href="assets/resume.pdf">Resume</a></li>
+                -->
+            </ul>
+            <button class="nav-menu" type="button" aria-expanded="false" aria-controls="menu-panel">
+                <span class="nav-menu-label">Menu</span><i class="nav-menu-icon" aria-hidden="true"></i>
+            </button>
         </div>
-
+    </nav>
+    <div class="menu-panel" id="menu-panel">
+        <a href="#work">Work <span>01</span></a>
+        <a href="#about">About <span>02</span></a>
+        <a href="#activity">Activity <span>03</span></a>
+        <a href="#contact">Contact <span>04</span></a>
+        <a href="projects.html">All projects <span>05</span></a>
     </div>
-    <div class="nav-bar">
-        <a href="#" class="logo"><span>F</span></a>
-        <a href="#" class="logo-name">FAISAL / PORTFOLIO</a>
-        <button class="menu" type="button"><span>MENU</span>
-            <i class="menu-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"
-                    class="svg-add">
-                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
-                </svg>
-            </i>
-        </button>
 
+    <main id="top">
+        <!-- HERO -->
+        <header class="hero" data-ascii-pointer>
+            <div class="wrap hero-grid">
+                <div class="hero-text">
+                    <p class="eyebrow reveal" style="--i:0">Baguio City · Philippines</p>
 
-
-    </div>
-    <div class="blur-field"></div>
-    <section class="page-content">
-        <div class="scroll-watcher"></div>
-
-
-        <section class="hero-wrapper">
-            <section class="hero">
-                <div class="main-container" id="home">
-
-                    <div class="secondary-container">
-                        <div class="info">
-                            <p class="place">BAGUIO CITY · PHILIPPINES</p>
-                            <h2>Hi, I'm <span>Faisal.</span><span class="cursor"></span></h2>
-
-                            <h3 class="info-h3">Full-Stack Developer</h3>
-
-                            <a href="#" class="resume">RESUME</a>
-
-                        </div>
-                        <div class="image-profile">
-                            <img src="assets/Halftone.webp" alt="profile">
-                            <div class="name-bar">
-                                <div class="column-name">
-                                    <span>@faii.dl</span>
-                                    Available for work!
-                                </div>
-                                <div class="green-icon"></div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
-            </section>
-
-            <section class="information" id="about">
-                <h2 class="after-hero-h2">
-                    <span class="line"><span>I'm a <strong>full-stack developer</strong></span></span>
-                    <span class="line"><span>building <strong>clean interfaces,</strong> PostgreSQL</span></span>
-                    <span class="line"><span><strong>backends,</strong> and data-driven systems,</span></span>
-                    <span class="line"><span>from a crowdsourced transit map</span></span>
-                    <span class="line"><span>to a hand-built web portfolio,</span></span>
-                    <span class="line"><span>shipped <strong>end to end, solo.</strong></span></span>
-                </h2>
-
-                <div class="infinite-techstack">
-                    <div class="inner-techstack">
-                        <div>JavaScript</div>
-                        <div>HTML &amp; CSS</div>
-                        <div>PostgreSQL</div>
-                        <div>Supabase</div>
-                        <div>PostGIS</div>
-                        <div>Flutter</div>
-                        <div>GSAP</div>
-                        <div>C#</div>
-                    </div>
-                    <div class="inner-techstack">
-                        <div>JavaScript</div>
-                        <div>HTML &amp; CSS</div>
-                        <div>PostgreSQL</div>
-                        <div>Supabase</div>
-                        <div>PostGIS</div>
-                        <div>Flutter</div>
-                        <div>GSAP</div>
-                        <div>C#</div>
-                    </div>
-                </div>
-
-            </section>
-        </section>
-        <section class="pin-wrapper">
-            <section class="experiences" id="experience">
-                <div class="career-archive">
-                    <div class="career-column">
-                        <p>CAREER ARCHIVE</p>
-                        <h4>EXPERIENCES</h4>
+                    <div class="hero-title reveal" style="--i:1">
+                        <span class="halftone halftone-chip" data-src="assets/avatar-source.webp" data-cols="30"
+                            data-crop="0.25,0.1,0.5" role="img" aria-label="Portrait of Faisal"><canvas></canvas></span>
+                        <h1 class="display">Hi, I'm Faisal.<span class="cursor" aria-hidden="true"></span></h1>
                     </div>
 
-                    <p>Roles, systems, and the work behind them.</p>
-                </div>
+                    <p class="hero-role reveal" style="--i:2">Full-Stack Developer</p>
 
-                <div>
-                    <h1 class="experiences-h1">EXPERIENCES</h1>
-                </div>
-            </section>
+                    <p class="lede reveal" style="--i:3">
+                        I build clean interfaces, PostgreSQL-backed systems and data-driven tools, from the schema all
+                        the way to the screen.
+                    </p>
 
-            <section class="horizontal-section">
-                <div class="experience-cardholder">
-                    <div class="card-container">
-                        <a href="project-zer0ed.html" class="card one">
+                    <div class="hero-actions reveal" style="--i:4">
+                        <a href="#work" class="btn btn-primary">View work</a>
+                        <a href="projects.html" class="btn">All projects</a>
+                    </div>
 
-                            <div class="card-info">
-                                <div class="card-top">
-                                    <span>PROFESSIONAL EXPERIENCE</span>
-                                    <div>WORK</div>
-                                </div>
-                                <h1>SOFTWARE ENGINEER</h1>
-                                <h3>Zer0ed</h3>
-                                <p class="about-card">Building Zer0ed: 100 Years Later solo in Unity, a hex-map survival
-                                    game with a real-time auto-battler. Every stat, recipe, and balancing value lives in
-                                    data, not code, with editor tools that set up, check, and generate it in one
-                                    click.</p>
-                                <h2 class="skills">
-                                    HIGHLIGHTS
-                                    <hr>
-                                </h2>
-                                <div class="skills-container">
-                                    <div class="skills-highlights one">
-                                        <div class="skill-line">
-                                            <p>01</p>
-                                            <h4>ARCHITECTURE & LOGIC</h4>
-                                        </div>
-                                        <div class="skill-line">
-                                            <p>02</p>
-                                            <h4>DATA-DRIVEN DESIGN</h4>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="skills-highlights two">
-                                        <div class="skill-line">
-                                            <p>03</p>
-                                            <h4>END-TO-END DEVELOPMENT</h4>
-                                        </div>
-                                        <div class="skill-line">
-                                            <p>04</p>
-                                            <h4>EDITOR TOOLING</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-image zer0ed">
-                                <div class="preview-slider">
-                                    <div class="slider-track">
-                                        <img src="assets/Zer0ed-day-tall.png"
-                                            alt="Pixel-art hex island: the squad's camp, a trail across the river, and an overgrown house to loot">
-                                        <img src="assets/Zer0ed-battle-tall.png"
-                                            alt="Pixel-art auto-battle: the squad faces purple mutants across hex tiles">
-                                        <img src="assets/Zer0ed-night-tall.png"
-                                            alt="Pixel-art hex island at night, lit by the campfire and house windows">
-                                    </div>
-                                    <div class="slider-controls">
-                                        <span class="slider-count">01 / 03</span>
-                                        <div class="slider-dots">
-                                            <button type="button" aria-label="Preview 1"></button>
-                                            <button type="button" aria-label="Preview 2"></button>
-                                            <button type="button" aria-label="Preview 3"></button>
-                                        </div>
-                                        <button class="slider-prev" type="button" aria-label="Previous preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                        <button class="slider-next" type="button" aria-label="Next preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                    </div>
-                                </div>
-                            </div>
+                    <dl class="stats reveal" style="--i:5">
+                        <div><dt>02</dt><dd>projects shipped</dd></div>
+                        <div><dt>Ruta</dt><dd>currently building</dd></div>
+                        <div><dt>UTC+8</dt><dd>Baguio, PH</dd></div>
+                        <div><dt>Open</dt><dd>to work</dd></div>
+                    </dl>
+
+                    <div class="pill-row reveal" style="--i:6">
+                        <a class="pill" href="https://github.com/faideleon" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" /></svg>
+                            GitHub
                         </a>
-
-                        <a href="project-ruta.html" class="card two">
-
-                            <div class="card-info">
-                                <div class="card-top">
-                                    <span>PERSONAL PROJECT</span>
-                                    <div>BUILD</div>
-                                </div>
-                                <h1>FULL-STACK DEVELOPER</h1>
-                                <h3>Ruta</h3>
-                                <p class="about-card">Built Ruta end to end: a crowdsourced, GPS-verified jeepney route
-                                    map
-                                    for Baguio City on Flutter, Supabase, and PostGIS. Designed a deduplication engine
-                                    that merges routes above 90% path overlap, and battery-light trip tracking that
-                                    keeps
-                                    GPS data to about 40 KB per two-hour trip.</p>
-                                <h2 class="skills">
-                                    HIGHLIGHTS
-                                    <hr>
-                                </h2>
-                                <div class="skills-container">
-                                    <div class="skills-highlights one">
-                                        <div class="skill-line">
-                                            <p>01</p>
-                                            <h4>GEOSPATIAL ARCHITECTURE</h4>
-                                        </div>
-                                        <div class="skill-line">
-                                            <p>02</p>
-                                            <h4>ROUTE DEDUPLICATION</h4>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="skills-highlights two">
-                                        <div class="skill-line">
-                                            <p>03</p>
-                                            <h4>BATTERY-LIGHT TRACKING</h4>
-                                        </div>
-                                        <div class="skill-line">
-                                            <p>04</p>
-                                            <h4>FULL-STACK DELIVERY</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-image ruta">
-                                <div class="preview-slider">
-                                    <div class="slider-track">
-                                        <img src="assets/Ruta-card.png"
-                                            alt="Ruta home screen with live map and nearby routes">
-                                        <img src="assets/Ruta-phone-route.png"
-                                            alt="Ruta route detail with stops, fare, and travel time">
-                                        <img src="assets/Ruta-phone-trip.png"
-                                            alt="Ruta active trip confirming the route by GPS">
-                                        <img src="assets/Ruta-phone-post.png"
-                                            alt="Ruta AI-drafted route stops, ready to edit">
-                                        <img src="assets/Ruta-phone-travel.png" alt="Ruta Travel Pack for tourists">
-                                        <img src="assets/Ruta-phone-save.png"
-                                            alt="Ruta fare comparison, jeep versus taxi">
-                                    </div>
-                                    <div class="slider-controls">
-                                        <span class="slider-count">01 / 06</span>
-                                        <div class="slider-dots">
-                                            <button type="button" aria-label="Preview 1"></button>
-                                            <button type="button" aria-label="Preview 2"></button>
-                                            <button type="button" aria-label="Preview 3"></button>
-                                            <button type="button" aria-label="Preview 4"></button>
-                                            <button type="button" aria-label="Preview 5"></button>
-                                            <button type="button" aria-label="Preview 6"></button>
-                                        </div>
-                                        <button class="slider-prev" type="button" aria-label="Previous preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                        <button class="slider-next" type="button" aria-label="Next preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-
-                    <div class="experience-nav">
-                        <span class="experience-count">01 / 02</span>
-                        <div class="experience-buttons">
-                            <button class="experience-prev" type="button" aria-label="Previous experience"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                    width="24px" fill="#e3e3e3">
-                                    <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                </svg></button>
-                            <button class="experience-next" type="button" aria-label="Next experience"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                    width="24px" fill="#e3e3e3">
-                                    <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                </svg></button>
-                        </div>
+                        <!-- TODO: add your LinkedIn URL, then uncomment
+                        <a class="pill" href="https://www.linkedin.com/in/YOUR-HANDLE" target="_blank" rel="noopener">LinkedIn</a>
+                        -->
+                        <button class="pill pill-copy" type="button" data-copy="faideleon25@gmail.com"
+                            aria-label="Copy email address">
+                            <span class="chip-label">faideleon25@gmail.com</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h10v12H9zM5 3h10v2H7v10H5z" /></svg>
+                        </button>
                     </div>
                 </div>
-            </section>
+
+                <figure class="art-card ascii-card reveal" style="--i:1">
+                    <div class="ascii-stage" role="img"
+                        aria-label="Animated ASCII art: cars winding down a switchback mountain road at dusk, under pines and the first stars">
+                        <canvas aria-hidden="true"></canvas>
+                    </div>
+                    <figcaption class="art-caption">
+                        <span class="caption-name">Switchback Dusk Drive <em>· Baguio</em></span>
+                        <span class="status"><i class="live-dot"></i>Available for work</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </header>
+
+        <!-- ABOUT -->
+        <section class="section about" id="about">
+            <div class="glyph-word" data-text="ABOUT" aria-hidden="true"><canvas></canvas></div>
+            <div class="wrap about-grid">
+                <figure class="art-card portrait rise">
+                    <div class="halftone halftone-portrait" data-src="assets/avatar-source.webp" data-cols="62"
+                        data-crop="0.04,0.05,0.92" data-animate role="img" aria-label="Halftone portrait of Faisal">
+                        <canvas></canvas>
+                    </div>
+                    <figcaption class="art-caption">
+                        <span>@faii.dl <em>· Baguio City</em></span>
+                        <em>move your cursor</em>
+                    </figcaption>
+                </figure>
+
+                <div class="about-text">
+                    <span class="eyebrow rise">About</span>
+                    <h2 class="title rise" style="--i:1">I'm a full-stack developer building clean interfaces,
+                        PostgreSQL backends, and data-driven systems.</h2>
+                    <p class="lede rise" style="--i:2">I work solo and end to end: product, data model, interface and
+                        the tooling around them. I've shipped a hex-map survival game built in Unity and this
+                        hand-built portfolio, and I'm currently building Ruta, a crowdsourced jeepney route map for
+                        Baguio City.</p>
+
+                    <dl class="kv rise" style="--i:3">
+                        <div><dt>Based in</dt><dd>Baguio City, Philippines</dd></div>
+                        <div><dt>Focus</dt><dd>Full-stack web, mobile, data</dd></div>
+                        <div><dt>Currently building</dt><dd>Ruta</dd></div>
+                        <div><dt>Open to</dt><dd>Full-time roles &amp; freelance</dd></div>
+                    </dl>
+
+                    <div class="chip-row rise" style="--i:4" aria-label="Tech stack">
+                        <span class="chip">JavaScript</span>
+                        <span class="chip">HTML &amp; CSS</span>
+                        <span class="chip">PostgreSQL</span>
+                        <span class="chip">Supabase</span>
+                        <span class="chip">PostGIS</span>
+                        <span class="chip">Flutter</span>
+                        <span class="chip">C# / Unity</span>
+                        <span class="chip">GSAP</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <div class="portfolio-showcase-underlay">
-
-        </div>
-        <section class="overlay-holder">
-            <section class="portfolio-showcase">
-                <div class="portfolio-container">
-                    <div class="portfolio-nav-bar">
-                        <div class="pnb">Portfolio Showcase <span>Selected Projects</span></div>
-                        <a href="projects.html" class="pnb-link">View alL Projects <span><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                    width="24px" fill="#e3e3e3">
-                                    <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                </svg></span></a>
-
+        <!-- WORK -->
+        <section class="section work" id="work">
+            <div class="glyph-word" data-text="WORK" aria-hidden="true"><canvas></canvas></div>
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">Selected work</span>
+                        <h2 class="title">Three builds, end to end.</h2>
                     </div>
-                    <hr class="pnb-hr">
-
-
-                    <div class="project-container">
-                    </div>
+                    <a class="text-link" href="projects.html">View all projects →</a>
                 </div>
-            </section>
 
-            <section class="portfolio-codingactivity">
-                <section class="pc-portfolio">
-                    <div class="pc-main">
-                        <div class="pc-main-info">
-                            <h4>Software Engineer</h4>
-                            <h1>Zer0ed</h1>
-                            <h3>A 2D hex-map survival game with a real-time auto-battler, built solo in Unity —
-                                scavenge,
-                                craft, and lead a squad across an island a hundred years after the fall.</h3>
-                            <div class="highlights-group"><span class="project-info-highlight">Highlights</span>
-                                <div class="highlights-info pc">
-                                    <p>01</p> <span>Built the hex-map world: movement, travel modes, a day-night clock,
-                                        and points of interest</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>02</p> <span>Designed survival, crafting, research, and base-building as
-                                        connected
-                                        systems</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>03</p> <span>Made every number tunable through ScriptableObject data, not
-                                        code</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>04</p> <span>Wrote editor tools that set up, check, and generate game data in one
-                                        click</span>
-                                </div>
-                            </div>
-
-                            <div class="techstack">
-                                <span>Unity 6</span>
-                                <span>C#</span>
-                                <span>URP 2D</span>
-                                <span>Tilemap</span>
-                                <span>Input System</span>
-                                <span>ScriptableObjects</span>
-                            </div>
-                            <a href="project-zer0ed.html" class="view-project-link">
-                                <div class="view-project">
-                                    <h5>View Project <span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></span></h5>
-                                </div>
-                            </a>
+                <div class="tiles">
+                    <a class="tile tile-wide art-card rise" href="project-zer0ed.html">
+                        <div class="thumb">
+                            <img src="assets/Zer0ed-day.png" loading="lazy"
+                                alt="Pixel-art hex island: the squad's camp, a trail across the river, and an overgrown house to loot">
+                            <canvas class="thumb-ascii" aria-hidden="true"></canvas>
                         </div>
-                        <div class="pc-main-image">
-                            <div class="image-container pc zer0ed">
-                                <div class="preview-slider">
-                                    <div class="slider-track">
-                                        <img src="assets/Zer0ed-day.png"
-                                            alt="Pixel-art hex island: the squad's camp, a trail across the river, and an overgrown house to loot">
-                                        <img src="assets/Zer0ed-battle.png"
-                                            alt="Pixel-art auto-battle: the squad faces purple mutants across hex tiles">
-                                        <img src="assets/Zer0ed-night.png"
-                                            alt="Pixel-art hex island at night, lit by the campfire and house windows">
-                                    </div>
-                                    <div class="slider-controls">
-                                        <span class="slider-count">01 / 03</span>
-                                        <div class="slider-dots">
-                                            <button type="button" aria-label="Preview 1"></button>
-                                            <button type="button" aria-label="Preview 2"></button>
-                                            <button type="button" aria-label="Preview 3"></button>
-                                        </div>
-                                        <button class="slider-prev" type="button" aria-label="Previous preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                        <button class="slider-next" type="button" aria-label="Next preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                    </div>
-                                </div>
+                        <div class="tile-body">
+                            <div class="tile-top">
+                                <span class="eyebrow">01 · Game · Software Engineer</span>
+                                <span class="state is-shipped">Shipped</span>
                             </div>
-                            <div class="image-about">Exploring the island by day, an auto-battle, and camp at night.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer pc-divider">
-                        <hr class="hr-one">
-                        <h5>Project / 01 / 03</h5>
-                        <hr class="hr-two">
-                    </div>
-
-                    <div class="pc-main flip">
-                        <div class="pc-main-info">
-                            <h4>Founder / Full-Stack Developer</h4>
-                            <h1>Ruta</h1>
-                            <h3>A live map and rider community for Baguio's jeepney routes. Riders describe a route in
-                                plain words, AI drafts the stops, and GPS confirmations from real trips mark it as
-                                verified.</h3>
-                            <div class="highlights-group"><span class="project-info-highlight">Highlights</span>
-                                <div class="highlights-info pc">
-                                    <p>01</p> <span>Designed the product and every screen, from splash to Travel
-                                        Pack</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>02</p> <span>Built the app on Flutter and Supabase with PostGIS geospatial
-                                        queries</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>03</p> <span>Created a deduplication engine that merges routes above 90% path
-                                        overlap</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>04</p> <span>Shipped battery-light trip tracking with geofencing and adaptive
-                                        timeouts</span>
-                                </div>
-                            </div>
-
-                            <div class="techstack">
-                                <span>Flutter</span>
-                                <span>Dart</span>
-                                <span>Supabase</span>
-                                <span>PostgreSQL</span>
-                                <span>PostGIS</span>
-                            </div>
-                            <a href="project-ruta.html" class="view-project-link">
-                                <div class="view-project">
-                                    <h5>View Project <span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></span></h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="pc-main-image">
-                            <div class="image-container pc ruta">
-                                <div class="preview-slider">
-                                    <div class="slider-track">
-                                        <img src="assets/Ruta-screens.png"
-                                            alt="Ruta home, route detail, and active trip screens">
-                                        <img src="assets/Ruta-post.png" alt="Ruta post a route flow">
-                                        <img src="assets/Ruta-travel.png" alt="Ruta travel pack screens">
-                                    </div>
-                                    <div class="slider-controls">
-                                        <span class="slider-count">01 / 03</span>
-                                        <div class="slider-dots">
-                                            <button type="button" aria-label="Preview 1"></button>
-                                            <button type="button" aria-label="Preview 2"></button>
-                                            <button type="button" aria-label="Preview 3"></button>
-                                        </div>
-                                        <button class="slider-prev" type="button" aria-label="Previous preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                        <button class="slider-next" type="button" aria-label="Next preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="image-about">Live map and routes, posting a route with AI, and the Travel Pack.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer pc-divider">
-                        <hr class="hr-one">
-                        <h5>Project / 02 / 03</h5>
-                        <hr class="hr-two">
-                    </div>
-
-                    <div class="pc-main">
-                        <div class="pc-main-info">
-                            <h4>Full-Stack Developer</h4>
-                            <h1>Personal Portfolio</h1>
-                            <h3>This site, a hand-built portfolio in plain HTML, CSS, and JavaScript, with GSAP
-                                scroll animation, Lenis smooth scrolling, and live GitHub contribution data, and no
-                                frameworks.</h3>
-                            <div class="highlights-group"><span class="project-info-highlight">Highlights</span>
-                                <div class="highlights-info pc">
-                                    <p>01</p> <span>Built scroll-based section transitions and reveals with GSAP
-                                        ScrollTrigger</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>02</p> <span>Built custom responsive image sliders for experience and project
-                                        previews</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>03</p> <span>Optimized mobile behavior by reducing heavy scroll effects and
-                                        layout
-                                        shifts</span>
-                                </div>
-                                <div class="highlights-info pc">
-                                    <p>04</p> <span>Pulled live GitHub contributions into a custom activity
-                                        graph</span>
-                                </div>
-                            </div>
-
-                            <div class="techstack">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                                <span>GSAP</span>
-                                <span>Lenis</span>
-                            </div>
-                            <a href="project-portfolio.html" class="view-project-link">
-                                <div class="view-project">
-                                    <h5>View Project <span><svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></span></h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="pc-main-image">
-                            <div class="image-container pc">
-                                <div class="preview-slider">
-                                    <div class="slider-track">
-                                        <img src="assets/portfolio-hero.png" alt="Portfolio home page hero">
-                                        <img src="assets/portfolio-projects.png" alt="Portfolio projects index">
-                                        <img src="assets/portfolio-detail.png" alt="Portfolio project page">
-                                    </div>
-                                    <div class="slider-controls">
-                                        <span class="slider-count">01 / 03</span>
-                                        <div class="slider-dots">
-                                            <button type="button" aria-label="Preview 1"></button>
-                                            <button type="button" aria-label="Preview 2"></button>
-                                            <button type="button" aria-label="Preview 3"></button>
-                                        </div>
-                                        <button class="slider-prev" type="button" aria-label="Previous preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                        <button class="slider-next" type="button" aria-label="Next preview"><svg
-                                                xmlns="http://www.w3.org/2000/svg" height="24px"
-                                                viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                                                <path
-                                                    d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                            </svg></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="image-about">The home page, the filterable project index, and a project page.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer pc-divider">
-                        <hr class="hr-one">
-                        <h5>Project / 03 / 03</h5>
-                        <hr class="hr-two">
-                    </div>
-                    <a href="projects.html" class="pc-viewprojects">View all Projects <span><svg
-                                xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                                fill="#e3e3e3">
-                                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                            </svg></span></a>
-                </section>
-
-
-
-            </section>
-            <section class="github-contributions">
-                <span class="watermark">Contributions</span>
-                <div class="gc-content">
-                    <div class="gc-navbar">
-                        <div class="gc-navbar-left">
-                            <h3>Coding Activity</h3>
-                            <h2>Github contributions</h2>
-                        </div>
-                        <div class="gc-navbar-right">Open-source activity tracker showing commits, pull requests,
-                            <br>and
-                            code
-                            reviews.
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="gc-content-main">
-                        <div class="date" style="grid-area: date;"><span>last 365 days</span>
-                            <h3></h3>
-                            <h5>contributions in the last year.</h5>
-                        </div>
-                        <div class="graph" style="grid-area: graph;">
-
-                            <div class="graph-content-container">
-                                <div class="content-weekday-labels"></div>
-                                <div class="content-of-graph">
-                                    <div class="graph-months">
-
-                                    </div>
-                                    <div class="graph-content"></div>
-                                </div>
-
-                            </div>
-
-
-                            <hr>
-                            <div class="graph-desc">
-                                <h5>@faideleon</h5>
-                                <div>Less
-                                    <span class="circle first-color"></span>
-                                    <span class="circle second-color"></span>
-                                    <span class="circle third-color"></span>
-                                    <span class="circle fourth-color"></span>
-                                    <span class="circle fifth-color"></span>
-                                    More
-                                </div>
-                            </div>
-                        </div>
-                        <div class="streak" style="grid-area: streak;">
-                            <span>Longest streak</span>
-
-                            <div class="streak-info">
-                                <h3> </h3><span>days</span>
-                            </div>
-
-
-                        </div>
-                        <div class="active" style="grid-area: active;">
-                            <span>active days</span>
-                            <h3></h3>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="contact-page" id="contact">
-                <h1 class="watermark contact">CONTACT</h1>
-                <div>
-                    <div class="contact-place"><span>Get in touch </span><span>Baguio, PH</span></div>
-                    <h1 class="contact-h1"><span>Le<span class="contact-h1-apost">t's</span> Work</span><span
-                            class="ch1-span">Together</span></h1>
-                    <a href="mailto:faideleon25@gmail.com" class="contact-email">faideleon25@gmail.com
-                        <div>
-                            <hr>
+                            <h3>Zer0ed</h3>
+                            <p>A 2D hex-map survival game with a real-time auto-battler, built solo in Unity. Scavenge,
+                                craft, and lead a squad across an island a hundred years after the fall.</p>
+                            <span class="tile-meta">Unity 6 · C# · URP 2D · ScriptableObjects</span>
                         </div>
                     </a>
-                    <h2 class="contact-links">
-                        <a href="#">resume</a><a href="https://github.com/faideleon" target="_blank"
-                            rel="noopener">github</a><a href="#">linkedin</a><a href="#">instagram</a>
-                    </h2>
-                    <h6 class="contact-footer">© 2026 Faisal D. Khan All rights reserved.</h6>
+
+                    <a class="tile art-card rise" style="--i:1" href="project-ruta.html">
+                        <div class="thumb">
+                            <img src="assets/Ruta-screens.png" loading="lazy"
+                                alt="Ruta home, route detail, and active trip screens">
+                            <canvas class="thumb-ascii" aria-hidden="true"></canvas>
+                        </div>
+                        <div class="tile-body">
+                            <div class="tile-top">
+                                <span class="eyebrow">02 · Full-stack · Founder</span>
+                                <span class="state is-building">Currently building</span>
+                            </div>
+                            <h3>Ruta</h3>
+                            <p>A live map and rider community for Baguio's jeepney routes. Riders describe a route in
+                                plain words, AI drafts the stops, and GPS confirmations from real trips verify it.</p>
+                            <span class="tile-meta">Flutter · Supabase · PostGIS</span>
+                        </div>
+                    </a>
+
+                    <a class="tile art-card rise" style="--i:2" href="project-portfolio.html">
+                        <div class="thumb">
+                            <img src="assets/portfolio-hero.png" loading="lazy" alt="Portfolio home page hero">
+                            <canvas class="thumb-ascii" aria-hidden="true"></canvas>
+                        </div>
+                        <div class="tile-body">
+                            <div class="tile-top">
+                                <span class="eyebrow">03 · Web · Full-Stack Developer</span>
+                                <span class="state is-shipped">Shipped</span>
+                            </div>
+                            <h3>Personal Portfolio</h3>
+                            <p>This site: hand-built in plain HTML, CSS and JavaScript, with live ASCII art, GSAP
+                                motion and live GitHub contribution data. No frameworks.</p>
+                            <span class="tile-meta">HTML · CSS · JavaScript · Canvas · GSAP</span>
+                        </div>
+                    </a>
                 </div>
-            </section>
+            </div>
         </section>
-    </section>
 
-    <script src=" https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js">
-    </script>
+        <!-- ACTIVITY -->
+        <section class="section activity" id="activity">
+            <div class="glyph-word" data-text="ACTIVITY" aria-hidden="true"><canvas></canvas></div>
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">Coding activity</span>
+                        <h2 class="title">GitHub contributions</h2>
+                    </div>
+                    <a class="text-link" href="https://github.com/faideleon" target="_blank" rel="noopener">@faideleon
+                        ↗</a>
+                </div>
 
+                <dl class="stats rise">
+                    <div><dt data-stat="total">—</dt><dd>contributions in <span data-stat="year">2026</span></dd></div>
+                    <div><dt data-stat="longest">—</dt><dd>day longest streak</dd></div>
+                    <div><dt data-stat="active">—</dt><dd>active days</dd></div>
+                    <div><dt>Live</dt><dd>from the GitHub API</dd></div>
+                </dl>
+
+                <figure class="art-card heatmap-card rise" style="--i:1">
+                    <div class="heatmap-scroll">
+                        <div class="heatmap" role="img" aria-label="GitHub contribution calendar for this year">
+                            <canvas aria-hidden="true"></canvas>
+                            <div class="heatmap-tip" hidden></div>
+                        </div>
+                    </div>
+                    <figcaption class="art-caption">
+                        <span>github.com/faideleon <em>· <span data-stat="year">2026</span></em></span>
+                        <span class="legend" aria-hidden="true">Less
+                            <i style="--c:#1c1830;--s:.42"></i><i style="--c:#4a3a88;--s:.62"></i><i
+                                style="--c:#b05a88;--s:.76"></i><i style="--c:#f8a060;--s:.88"></i><i
+                                style="--c:#ffc478;--s:.96"></i>More</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section contact" id="contact">
+            <div class="wrap">
+                <span class="eyebrow">Get in touch</span>
+                <h2 class="sr-only">Let's work together</h2>
+                <div class="glyph-word contact-word" data-text="LET'S WORK|TOGETHER"
+                    data-text-narrow="LET'S|WORK|TOGETHER" data-alpha="1" data-cell="9" data-wake aria-hidden="true">
+                    <canvas></canvas>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info rise">
+                        <p class="lede">Have a role, a project, or a route you think Ruta is missing? Send a message
+                            or copy my email.</p>
+                        <button class="pill pill-copy pill-lg" type="button" data-copy="faideleon25@gmail.com"
+                            aria-label="Copy email address">
+                            <span class="chip-label">faideleon25@gmail.com</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h10v12H9zM5 3h10v2H7v10H5z" /></svg>
+                        </button>
+                        <div class="pill-row">
+                            <a class="pill" href="https://github.com/faideleon" target="_blank" rel="noopener">GitHub ↗</a>
+                            <!-- TODO: add your LinkedIn URL, then uncomment
+                            <a class="pill" href="https://www.linkedin.com/in/YOUR-HANDLE" target="_blank" rel="noopener">LinkedIn ↗</a>
+                            -->
+                        </div>
+                        <p class="local mono">Baguio <span data-clock>--:--</span> · UTC+8 · <i class="live-dot"></i>
+                            Available for work</p>
+                    </div>
+
+                    <form class="contact-form art-card rise" style="--i:1" data-to="faideleon25@gmail.com">
+                        <label>
+                            <span class="eyebrow">Name</span>
+                            <input name="name" type="text" autocomplete="name" required>
+                        </label>
+                        <label>
+                            <span class="eyebrow">Email</span>
+                            <input name="email" type="email" autocomplete="email" required>
+                        </label>
+                        <label>
+                            <span class="eyebrow">Message</span>
+                            <textarea name="message" rows="5" required></textarea>
+                        </label>
+                        <div class="form-foot">
+                            <button class="btn btn-primary" type="submit">Send message →</button>
+                            <small>Opens your email app.</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <span>© 2026 Faisal D. Khan</span>
+            <span>Scene: <a href="https://www.ascii-magic.com/ascii" target="_blank" rel="noopener">ASCII Magic</a>
+                (MIT)</span>
+            <a href="#top">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
-    <script src="script/script_preview.js"></script>
-    <script src="script/script.js"></script>
+    <script type="module" src="script/site.js?v=2"></script>
 </body>
 
 </html>
