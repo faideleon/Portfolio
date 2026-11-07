@@ -101,6 +101,7 @@ document.querySelectorAll(".cell-portrait[data-src]").forEach((el) => mountCellP
     src: el.dataset.src,
     crop: (el.dataset.crop || "0,0,1").split(",").map(Number),
     cellPx: Number(el.dataset.cell) || 6,
+    sideScale: Number(el.dataset.side) || 1,
     intro: el.hasAttribute("data-intro"),
     shimmer: el.hasAttribute("data-shimmer"),
     wake: el.hasAttribute("data-wake"),

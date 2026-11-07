@@ -64,7 +64,7 @@ const REVEAL_MS = 420;
  *  cellPx: cell size in CSS px, intro: fade up from the bottom, shimmer: a soft band of light sweeps up the figure,
  *  wake: cursor pushes cells, reveal: the real photo cross-fades in on hover (hover-capable pointers only)
  */
-export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, intro = false, shimmer = false, wake: withWake = false, reveal = false } = {}) {
+export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, sideScale = 1, intro = false, shimmer = false, wake: withWake = false, reveal = false } = {}) {
     const canvas = el.querySelector("canvas");
     const ctx = canvas.getContext("2d");
     const photo = el.querySelector(".cell-photo");
@@ -75,11 +75,12 @@ export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, intro
     async function build() {
         const img = await loadImage(src);
         size = fitCanvas(canvas, el);
-        const cell = cellPx * size.dpr;
-        const cols = Math.max(6, Math.floor(size.w / cell)), rows = Math.max(6, Math.floor(size.h / cell));
-        const cw = size.w / cols;                                  // stretch cells to fill exactly
-        const sw = img.width * crop[2], sh = sw * (size.h / size.w);
-        const sx = img.width * crop[0], sy = img.height * crop[1];
+        // whole device pixels per cell, so every square is the same size (no 2px/3px striping)
+        const cw = Math.max(2, Math.round(cellPx * size.dpr));
+        const cols = Math.max(6, Math.floor(size.w / cw)), rows = Math.max(6, Math.floor(size.h / cw));
+        const gx = Math.floor((size.w - cols * cw) / 2), gy = Math.floor((size.h - rows * cw) / 2);
+        const sw = img.width * crop[2] * (cols * cw / size.w), sh = sw * (rows / cols);
+        const sx = img.width * crop[0] + (img.width * crop[2] * gx) / size.w, sy = img.height * crop[1] + (img.width * crop[2] * gy) / size.w;
         const S = 3, px = pixels(img, sx, sy, sw, sh, cols * S, rows * S);
         const vals = new Float32Array(cols * rows), inside = new Uint8Array(cols * rows), figure = [];
         for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
@@ -104,7 +105,7 @@ export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, intro
         for (let c = 0; c < delay.length; c++) delay[c] = (1 - ((c / cols) | 0) / rows) * 650 + hash01(c) * 220;
         const cells = [];
         for (let c = 0; c < level.length; c++) if (level[c] >= 0) cells.push(c);
-        g = { cols, rows, cw, ch: size.h / rows, level, delay, cells };
+        g = { cols, rows, cw, ch: cw, gx, gy, level, delay, cells };
         if (withWake && !wake) wake = createWake(cols, rows, { radius: 5, maxD: 1.2, strength: 0.2 });
         // line the photo up with the crop, so the reveal swaps in place
         if (photo) {
@@ -118,7 +119,7 @@ export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, intro
     function paint(introT) {
         if (!g) return;
         for (const b of buckets) b.length = 0;
-        const { cols, rows, cw, ch, level, delay, cells } = g;
+        const { cols, rows, cw, ch, gx, gy, level, delay, cells } = g;
         const band = shimmer && !reduceMotion ? sweepPos(t) : -9;
         for (const c of cells) {
             let a = 1;
@@ -146,9 +147,13 @@ export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, intro
             ctx.beginPath();
             for (const c of list) {
                 const x = c % cols, y = (c / cols) | 0;
-                const sx = cw * side, sy = ch * side;
                 const ox = wake ? wake.dx[c] : 0, oy = wake ? wake.dy[c] : 0;
-                ctx.rect((x + ox) * cw + (cw - sx) / 2, (y + oy) * ch + (ch - sy) / 2, sx, sy);
+                // snap to whole device pixels and always leave at least a 1px gap, so tiny cells never merge
+                const x0 = gx + Math.round((x + ox) * cw), x1 = gx + Math.round((x + 1 + ox) * cw);
+                const y0 = gy + Math.round((y + oy) * ch), y1 = gy + Math.round((y + 1 + oy) * ch);
+                const sx = Math.max(1, Math.min(x1 - x0 - 1, Math.round((x1 - x0) * side * sideScale)));
+                const sy = Math.max(1, Math.min(y1 - y0 - 1, Math.round((y1 - y0) * side * sideScale)));
+                ctx.rect(x0 + Math.floor((x1 - x0 - sx) / 2), y0 + Math.floor((y1 - y0 - sy) / 2), sx, sy);
             }
             ctx.fill();
         }
