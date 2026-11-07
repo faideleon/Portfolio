@@ -104,6 +104,8 @@ document.querySelectorAll(".cell-portrait[data-src]").forEach((el) => mountCellP
     cellPx: Number(el.dataset.cell) || 6,
     sideScale: Number(el.dataset.side) || 1,
     sharpen: Number(el.dataset.sharpen) || 0,
+    uniform: el.hasAttribute("data-uniform"),
+    tone: el.dataset.tone || "dusk",
     intro: el.hasAttribute("data-intro"),
     shimmer: el.hasAttribute("data-shimmer"),
     wake: el.hasAttribute("data-wake"),

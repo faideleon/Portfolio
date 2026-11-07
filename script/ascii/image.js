@@ -53,8 +53,9 @@ export function sweepPos(t, period = 5, travel = 1.6) {
     return p > 1 ? -9 : -0.2 + p * 1.4;
 }
 
-const LEVELS = 16, ALPHAS = 8;
+const LEVELS = 32, ALPHAS = 8;
 const P_COLOR = Array.from({ length: LEVELS }, (_, q) => duskAt(q / (LEVELS - 1)));
+const P_MONO = Array.from({ length: LEVELS }, (_, q) => { const v = Math.round(36 + 214 * (q / (LEVELS - 1))); return `rgb(${v},${v},${v})`; });
 const P_SIDE = Array.from({ length: LEVELS }, (_, q) => Math.min(0.92, 0.34 + 0.6 * Math.sqrt(q / (LEVELS - 1))));
 const REVEAL_MS = 420;
 
@@ -64,7 +65,7 @@ const REVEAL_MS = 420;
  *  cellPx: cell size in CSS px, intro: fade up from the bottom, shimmer: a soft band of light sweeps up the figure,
  *  wake: cursor pushes cells, reveal: the real photo cross-fades in on hover (hover-capable pointers only)
  */
-export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, sideScale = 1, sharpen = 0, intro = false, shimmer = false, wake: withWake = false, reveal = false } = {}) {
+export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, sideScale = 1, sharpen = 0, tone = "dusk", uniform = false, intro = false, shimmer = false, wake: withWake = false, reveal = false } = {}) {
     const canvas = el.querySelector("canvas");
     const ctx = canvas.getContext("2d");
     const photo = el.querySelector(".cell-photo");
@@ -155,8 +156,8 @@ export function mountCellPortrait(el, { src, crop = [0, 0, 1], cellPx = 6, sideS
         for (let b = 0; b < buckets.length; b++) {
             const list = buckets[b];
             if (!list.length) continue;
-            const q = (b / ALPHAS) | 0, side = P_SIDE[q];
-            ctx.fillStyle = P_COLOR[q];
+            const q = (b / ALPHAS) | 0, side = uniform ? 0.86 : P_SIDE[q];
+            ctx.fillStyle = (tone === "mono" ? P_MONO : P_COLOR)[q];
             ctx.globalAlpha = (b % ALPHAS) / (ALPHAS - 1);
             ctx.beginPath();
             for (const c of list) {
