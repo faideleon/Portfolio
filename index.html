@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/base.css?v=2">
-    <link rel="stylesheet" href="styles/home.css?v=2">
+    <link rel="stylesheet" href="styles/base.css?v=3">
+    <link rel="stylesheet" href="styles/home.css?v=3">
 </head>
 
 <body>
@@ -50,9 +50,9 @@
                     <p class="eyebrow reveal" style="--i:0">Baguio City · Philippines</p>
 
                     <div class="hero-title reveal" style="--i:1">
-                        <span class="halftone halftone-chip" data-src="assets/avatar-source.webp" data-cols="30"
-                            data-crop="0.25,0.1,0.5" role="img" aria-label="Portrait of Faisal"><canvas></canvas></span>
-                        <h1 class="display">Hi, I'm Faisal.<span class="cursor" aria-hidden="true"></span></h1>
+                        <span class="cell-portrait portrait-chip" data-src="assets/avatar-source.webp" data-crop="0.17,0.04,0.66"
+                            data-cell="3" data-intro data-shimmer role="img" aria-label="Portrait of Faisal"><canvas></canvas></span>
+                        <h1 class="display">Hi, I'm <span class="nowrap">Faisal.<span class="cursor" aria-hidden="true"></span></span></h1>
                     </div>
 
                     <p class="hero-role reveal" style="--i:2">Full-Stack Developer</p>
@@ -71,7 +71,7 @@
                         <div><dt>02</dt><dd>projects shipped</dd></div>
                         <div><dt>Ruta</dt><dd>currently building</dd></div>
                         <div><dt>UTC+8</dt><dd>Baguio, PH</dd></div>
-                        <div><dt>Open</dt><dd>to work</dd></div>
+                        <div><dt><i class="live-dot" aria-hidden="true"></i>Open</dt><dd>to work</dd></div>
                     </dl>
 
                     <div class="pill-row reveal" style="--i:6">
@@ -105,16 +105,17 @@
 
         <!-- ABOUT -->
         <section class="section about" id="about">
-            <div class="glyph-word" data-text="ABOUT" aria-hidden="true"><canvas></canvas></div>
+            <div class="glyph-word" data-text="ABOUT" data-color="dusk" data-align="left" aria-hidden="true"><canvas></canvas></div>
             <div class="wrap about-grid">
                 <figure class="art-card portrait rise">
-                    <div class="halftone halftone-portrait" data-src="assets/avatar-source.webp" data-cols="62"
-                        data-crop="0.04,0.05,0.92" data-animate role="img" aria-label="Halftone portrait of Faisal">
+                    <div class="cell-portrait portrait-large" data-src="assets/avatar-source.webp" data-crop="0.04,0.05,0.92"
+                        data-cell="6" data-wake data-shimmer data-reveal role="img" aria-label="Portrait of Faisal">
                         <canvas></canvas>
+                        <img class="cell-photo" alt="" aria-hidden="true" decoding="async">
                     </div>
                     <figcaption class="art-caption">
                         <span>@faii.dl <em>· Baguio City</em></span>
-                        <em>move your cursor</em>
+                        <em class="hover-only">hover to reveal</em>
                     </figcaption>
                 </figure>
 
@@ -150,7 +151,7 @@
 
         <!-- WORK -->
         <section class="section work" id="work">
-            <div class="glyph-word" data-text="WORK" aria-hidden="true"><canvas></canvas></div>
+            <div class="glyph-word" data-text="WORK" data-color="dusk" data-align="left" aria-hidden="true"><canvas></canvas></div>
             <div class="wrap">
                 <div class="section-head">
                     <div>
@@ -219,7 +220,7 @@
 
         <!-- ACTIVITY -->
         <section class="section activity" id="activity">
-            <div class="glyph-word" data-text="ACTIVITY" aria-hidden="true"><canvas></canvas></div>
+            <div class="glyph-word" data-text="ACTIVITY" data-color="dusk" data-align="left" aria-hidden="true"><canvas></canvas></div>
             <div class="wrap">
                 <div class="section-head">
                     <div>
@@ -318,7 +319,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
-    <script type="module" src="script/site.js?v=2"></script>
+    <script type="module" src="script/site.js?v=3"></script>
 </body>
 
 </html>

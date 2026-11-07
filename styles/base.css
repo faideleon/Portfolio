@@ -231,9 +231,14 @@ h4 {
     transition: color 0.2s;
 }
 
-.nav-links a:hover,
 .nav-links a[aria-current="page"] {
     color: var(--ink);
+}
+
+@media (hover: hover) {
+    .nav-links a:hover {
+        color: var(--ink);
+    }
 }
 
 .nav-menu {
@@ -354,8 +359,10 @@ h4 {
     transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
-.btn:hover {
-    border-color: var(--ink);
+@media (hover: hover) {
+    .btn:hover {
+        border-color: var(--ink);
+    }
 }
 
 .btn-primary {
@@ -364,8 +371,10 @@ h4 {
     color: var(--bg);
 }
 
-.btn-primary:hover {
-    background: rgba(255, 255, 255, 0.86);
+@media (hover: hover) {
+    .btn-primary:hover {
+        background: rgba(255, 255, 255, 0.86);
+    }
 }
 
 .btn svg,
@@ -391,8 +400,10 @@ h4 {
     transition: border-color 0.2s, color 0.2s;
 }
 
-.pill:hover {
-    border-color: var(--line-strong);
+@media (hover: hover) {
+    .pill:hover {
+        border-color: var(--line-strong);
+    }
 }
 
 .pill-copy {
@@ -434,9 +445,11 @@ button.chip {
     cursor: pointer;
 }
 
-button.chip:hover {
-    color: var(--ink);
-    border-color: var(--line-strong);
+@media (hover: hover) {
+    button.chip:hover {
+        color: var(--ink);
+        border-color: var(--line-strong);
+    }
 }
 
 button.chip.is-active {
@@ -470,6 +483,9 @@ button.chip.is-active b {
 }
 
 .stats dt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--font-mono);
     font-size: 22px;
     letter-spacing: -0.03em;
@@ -566,9 +582,14 @@ button.chip.is-active b {
     transition: border-color 0.25s;
 }
 
-.tile:hover,
 .tile:focus-visible {
     border-color: var(--line-strong);
+}
+
+@media (hover: hover) {
+    .tile:hover {
+        border-color: var(--line-strong);
+    }
 }
 
 .tile-wide {
@@ -676,12 +697,14 @@ button.chip.is-active b {
 
 /* ---------- glyph words (big background section titles) ---------- */
 
+/* section words: a square-cell header in normal flow, aligned to the content column */
 .glyph-word {
-    position: absolute;
-    inset: 0 0 auto;
-    height: clamp(120px, 16vw, 240px);
+    position: relative;
+    width: calc(100% - var(--gutter) * 2);
+    max-width: var(--maxw);
+    height: clamp(52px, 8vw, 116px);
+    margin: 0 auto clamp(32px, 4vw, 56px);
     pointer-events: none;
-    z-index: 0;
 }
 
 .glyph-word canvas {
@@ -694,6 +717,10 @@ button.chip.is-active b {
     position: relative;
     padding: clamp(90px, 12vw, 160px) 0;
     border-top: 1px solid var(--line);
+}
+
+.section:has(> .glyph-word) {
+    padding-top: clamp(64px, 8vw, 112px);
 }
 
 .section>.wrap {
@@ -725,9 +752,38 @@ button.chip.is-active b {
     transition: color 0.2s, border-color 0.2s;
 }
 
-.text-link:hover {
-    color: var(--ink);
-    border-color: var(--ink);
+@media (hover: hover) {
+    .text-link:hover {
+        color: var(--ink);
+        border-color: var(--ink);
+    }
+}
+
+/* ---------- press feedback ---------- */
+
+.btn,
+.pill,
+button.chip,
+.nav-menu,
+.gallery-prev,
+.gallery-next {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .btn,
+    .pill,
+    button.chip {
+        transition-property: background-color, color, border-color, scale;
+        transition-duration: 0.2s, 0.2s, 0.2s, 0.15s;
+        transition-timing-function: ease, ease, ease, ease-out;
+    }
+
+    .btn:not(:disabled):active,
+    .pill:not(:disabled):active,
+    button.chip:not(:disabled):active {
+        scale: 0.96;
+    }
 }
 
 /* ---------- reveal ---------- */
@@ -779,6 +835,8 @@ button.chip.is-active b {
     text-decoration: none;
 }
 
-.site-footer a:hover {
-    color: var(--ink);
+@media (hover: hover) {
+    .site-footer a:hover {
+        color: var(--ink);
+    }
 }

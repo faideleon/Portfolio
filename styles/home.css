@@ -6,11 +6,9 @@
 
 .hero {
     position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
     display: flex;
     align-items: center;
-    padding: calc(var(--nav-h) + 40px) 0 80px;
+    padding: calc(var(--nav-h) + clamp(40px, 7vh, 88px)) 0 clamp(56px, 9vh, 104px);
 }
 
 .hero-grid {
@@ -31,7 +29,7 @@
 .hero-title {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
 }
 
 .hero-title h1 {
@@ -71,30 +69,54 @@
     }
 }
 
-/* halftone portraits (drawn by script/ascii/image.js) */
-.halftone {
+/* square-cell portraits (drawn by script/ascii/image.js) */
+.cell-portrait {
     position: relative;
     display: block;
     overflow: hidden;
+    background: #000;
 }
 
-.halftone canvas {
+.cell-portrait canvas {
+    position: relative;
+    z-index: 1;
     display: block;
     width: 100%;
     height: 100%;
+    transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.halftone.is-fallback {
-    background: url('../assets/avatar-source.webp') center 10% / cover no-repeat;
-    filter: grayscale(1) contrast(1.2);
+.cell-photo {
+    position: absolute;
+    max-width: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.halftone-chip {
+@media (hover: hover) {
+    .cell-portrait.can-reveal:hover canvas {
+        opacity: 0;
+    }
+
+    .cell-portrait.can-reveal:hover .cell-photo {
+        opacity: 1;
+    }
+}
+
+.cell-portrait.is-fallback {
+    background: url('../assets/avatar-source.webp') center 8% / cover no-repeat;
+}
+
+.portrait-chip {
     flex: none;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
+    width: 80px;
+    height: 80px;
     border: 1px solid var(--line-strong);
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 /* the scene card */
@@ -162,6 +184,8 @@
 /* phones: the scene fills the hero behind the text */
 @media (max-width: 900px) {
     .hero {
+        min-height: 100vh;
+        min-height: 100svh;
         align-items: flex-end;
         padding-bottom: 56px;
     }
@@ -192,20 +216,8 @@
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 18%, rgba(0, 0, 0, 0.78) 36%, rgba(0, 0, 0, 0.92) 55%, #000 100%);
     }
 
+    /* the green dot moves into the "Open to work" stat on phones */
     .ascii-card .art-caption {
-        position: absolute;
-        z-index: 1;
-        top: calc(var(--nav-h) + 8px);
-        right: var(--gutter);
-        min-height: 0;
-        padding: 8px 12px;
-        border: 1px solid var(--line);
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-    }
-
-    .ascii-card .caption-name {
         display: none;
     }
 
@@ -213,9 +225,9 @@
         gap: 14px;
     }
 
-    .halftone-chip {
-        width: 54px;
-        height: 54px;
+    .portrait-chip {
+        width: 64px;
+        height: 64px;
     }
 
     .hero-title h1 {
@@ -231,13 +243,10 @@
     grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
     gap: clamp(32px, 6vw, 96px);
     align-items: start;
-    padding-top: clamp(40px, 7vw, 110px);
 }
 
-.portrait .halftone {
+.portrait-large {
     aspect-ratio: 360 / 470;
-    background: #000;
-    cursor: crosshair;
 }
 
 .about-text {
@@ -363,8 +372,9 @@
 }
 
 .contact-word {
-    position: relative;
-    inset: auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     height: clamp(170px, 24vw, 340px);
     pointer-events: auto;
     margin-bottom: clamp(32px, 5vw, 64px);

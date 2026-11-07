@@ -4,7 +4,7 @@
  */
 import { reduceMotion } from "./ascii/engine.js";
 import { mountScene } from "./ascii/scene.js";
-import { mountHalftone, mountAsciiThumb } from "./ascii/image.js";
+import { mountCellPortrait, mountAsciiThumb } from "./ascii/image.js";
 import { mountLettering } from "./ascii/lettering.js";
 import { mountHeatmap } from "./ascii/heatmap.js";
 
@@ -97,11 +97,14 @@ if (filterButtons.length) {
 document.querySelectorAll(".ascii-stage").forEach((stage) =>
     mountScene(stage, { onReady: () => stage.closest(".hero")?.classList.add("hero-ready") }));
 
-document.querySelectorAll(".halftone[data-src]").forEach((el) => mountHalftone(el, {
+document.querySelectorAll(".cell-portrait[data-src]").forEach((el) => mountCellPortrait(el, {
     src: el.dataset.src,
-    cols: Number(el.dataset.cols) || 28,
-    crop: (el.dataset.crop || "0.25,0.14,0.5").split(",").map(Number),
-    animate: el.hasAttribute("data-animate"),
+    crop: (el.dataset.crop || "0,0,1").split(",").map(Number),
+    cellPx: Number(el.dataset.cell) || 6,
+    intro: el.hasAttribute("data-intro"),
+    shimmer: el.hasAttribute("data-shimmer"),
+    wake: el.hasAttribute("data-wake"),
+    reveal: el.hasAttribute("data-reveal"),
 }));
 
 document.querySelectorAll(".thumb").forEach((thumb) =>
@@ -109,8 +112,10 @@ document.querySelectorAll(".thumb").forEach((thumb) =>
 
 document.querySelectorAll(".glyph-word").forEach((el) => mountLettering(el, {
     cellPx: Number(el.dataset.cell) || 10,
-    alpha: Number(el.dataset.alpha) || 0.12,
+    alpha: Number(el.dataset.alpha) || 1,
     wake: el.hasAttribute("data-wake"),
+    color: el.dataset.color || "white",
+    align: el.dataset.align || "center",
 }));
 
 document.querySelectorAll(".heatmap").forEach((el) => mountHeatmap(el, {

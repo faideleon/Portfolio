@@ -37,12 +37,16 @@
     transition: transform 0.3s;
 }
 
-.back-link:hover {
-    color: var(--ink);
+@media (hover: hover) {
+    .back-link:hover {
+        color: var(--ink);
+    }
 }
 
-.back-link:hover span {
-    transform: translateX(-4px) rotate(180deg);
+@media (hover: hover) {
+    .back-link:hover span {
+        transform: translateX(-4px) rotate(180deg);
+    }
 }
 
 .project-header {
@@ -111,8 +115,10 @@
     text-decoration: none;
 }
 
-.header-right a:hover {
-    text-decoration: underline;
+@media (hover: hover) {
+    .header-right a:hover {
+        text-decoration: underline;
+    }
 }
 
 .header-right .state {
@@ -228,9 +234,11 @@
     transform: rotate(180deg);
 }
 
-.gallery-prev:hover,
-.gallery-next:hover {
-    border-color: var(--ink);
+@media (hover: hover) {
+    .gallery-prev:hover,
+    .gallery-next:hover {
+        border-color: var(--ink);
+    }
 }
 
 /* ---------- story ---------- */
@@ -408,8 +416,10 @@
     transition: background-color 0.25s;
 }
 
-.project-nav a:hover {
-    background: var(--bg-raised);
+@media (hover: hover) {
+    .project-nav a:hover {
+        background: var(--bg-raised);
+    }
 }
 
 .project-nav .nav-next {

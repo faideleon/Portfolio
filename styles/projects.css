@@ -4,11 +4,7 @@
 
 .page-head {
     position: relative;
-    padding: calc(var(--nav-h) + clamp(60px, 9vw, 120px)) 0 clamp(48px, 6vw, 80px);
-}
-
-.page-head .glyph-word {
-    top: calc(var(--nav-h) + 8px);
+    padding: calc(var(--nav-h) + clamp(32px, 5vw, 64px)) 0 clamp(48px, 6vw, 80px);
 }
 
 .page-head-grid {
@@ -31,8 +27,10 @@
     text-decoration: none;
 }
 
-.page-head-text .eyebrow a:hover {
-    color: var(--ink);
+@media (hover: hover) {
+    .page-head-text .eyebrow a:hover {
+        color: var(--ink);
+    }
 }
 
 .featured {
@@ -41,8 +39,10 @@
     transition: border-color 0.25s;
 }
 
-.featured:hover {
-    border-color: var(--line-strong);
+@media (hover: hover) {
+    .featured:hover {
+        border-color: var(--line-strong);
+    }
 }
 
 .featured .thumb {
