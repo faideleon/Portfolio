@@ -368,6 +368,10 @@
     color: var(--card);
 }
 
+.heatmap-tip.is-below {
+    transform: translate(-50%, 8px);
+}
+
 .gh-body .heatmap.is-error::after {
     color: var(--card-ink-2);
 }

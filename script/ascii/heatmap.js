@@ -100,8 +100,13 @@ export async function mountHeatmap(el, { user = "faideleon", onStats, ink = fals
         const d = days[i], date = new Date(d.date + "T00:00:00");
         tip.textContent = `${d.count} contribution${d.count === 1 ? "" : "s"} · ${MONTHS[date.getMonth()]} ${date.getDate()}`;
         tip.hidden = false;
-        tip.style.left = `${(geo.labelW + (col + 0.5) * geo.cell) / geo.dpr}px`;
-        tip.style.top = `${(geo.labelH + row * geo.cell) / geo.dpr}px`;
+        // keep the whole tooltip inside the calendar horizontally too
+        const half = tip.offsetWidth / 2, cx = (geo.labelW + (col + 0.5) * geo.cell) / geo.dpr;
+        tip.style.left = `${Math.max(half, Math.min(el.clientWidth - half, cx))}px`;
+        // the scroll box clips anything above it, so the top rows show their tooltip underneath
+        const below = row < 2;
+        tip.classList.toggle("is-below", below);
+        tip.style.top = `${(geo.labelH + (below ? row + 1 : row) * geo.cell) / geo.dpr}px`;
     });
     el.addEventListener("pointerleave", () => (tip.hidden = true));
 
