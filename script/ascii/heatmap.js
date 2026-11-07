@@ -41,16 +41,24 @@ export async function mountHeatmap(el, { user = "faideleon", onStats, ink = fals
     function layout() {
         const s = fitCanvas(canvas, el);
         const labelW = 34 * s.dpr, labelH = 20 * s.dpr;
-        const cell = Math.max(4 * s.dpr, Math.floor((s.w - labelW) / cols));
+        // phones: rather than shrinking the whole year into specks (or scrolling sideways),
+        // show the most recent weeks that fit at a tappable size
+        const minCell = 13 * s.dpr;
+        let first = 0, cell = Math.floor((s.w - labelW) / cols);
+        if (cell < minCell) {
+            const visible = Math.max(8, Math.floor((s.w - labelW) / minCell));
+            first = Math.max(0, cols - visible);
+            cell = Math.floor((s.w - labelW) / visible);
+        }
         const h = labelH + cell * 7;
         if (canvas.height !== Math.round(h)) { canvas.height = Math.round(h); canvas.style.height = `${h / s.dpr}px`; }
-        geo = { ...s, labelW, labelH, cell };
+        geo = { ...s, labelW, labelH, cell, first };
         paint();
     }
 
     function paint() {
         if (!geo) return;
-        const { labelW, labelH, cell, dpr } = geo;
+        const { labelW, labelH, cell, dpr, first } = geo;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.font = `${10 * dpr}px "Martian Mono", ui-monospace, monospace`;
         ctx.fillStyle = ink ? "rgba(26,14,6,.6)" : "rgba(255,255,255,.38)";
@@ -58,17 +66,21 @@ export async function mountHeatmap(el, { user = "faideleon", onStats, ink = fals
         ["Mon", "Wed", "Fri"].forEach((l, i) => ctx.fillText(l, 0, labelH + cell * (i * 2 + 1.5)));
         let lastMonth = -1;
         days.forEach((d, i) => {
-            const col = Math.floor((i + pad) / 7);
+            const col = Math.floor((i + pad) / 7) - first;
             const m = new Date(d.date + "T00:00:00").getMonth();
-            if (m !== lastMonth && (i + pad) % 7 === 0) { lastMonth = m; ctx.fillText(MONTHS[m], labelW + col * cell, labelH / 2); }
+            if (m !== lastMonth && (i + pad) % 7 === 0) {
+                lastMonth = m;
+                if (col >= 0) ctx.fillText(MONTHS[m], labelW + col * cell, labelH / 2);
+            }
         });
-        const shown = reveal * (cols + 6);
+        const shown = reveal * (cols - first + 6);
         for (let lv = 0; lv < 5; lv++) {
             ctx.fillStyle = ramp[lv];
             ctx.beginPath();
             days.forEach((d, i) => {
                 if (levelOf(d.count) !== lv) return;
-                const k = i + pad, col = Math.floor(k / 7), row = k % 7;
+                const k = i + pad, col = Math.floor(k / 7) - first, row = k % 7;
+                if (col < 0) return;
                 const a = Math.max(0, Math.min(1, shown - col));
                 if (a <= 0) return;
                 const s = cell * SIDE[lv] * (0.6 + 0.4 * a);
@@ -91,11 +103,11 @@ export async function mountHeatmap(el, { user = "faideleon", onStats, ink = fals
     });
 
     // tooltip
-    el.addEventListener("pointermove", (e) => {
+    function showTip(e) {
         if (!geo) return;
         const r = canvas.getBoundingClientRect(), x = (e.clientX - r.left) * geo.dpr, y = (e.clientY - r.top) * geo.dpr;
         const col = Math.floor((x - geo.labelW) / geo.cell), row = Math.floor((y - geo.labelH) / geo.cell);
-        const i = col * 7 + row - pad;
+        const i = (col + geo.first) * 7 + row - pad;
         if (col < 0 || row < 0 || row > 6 || i < 0 || i >= days.length) { tip.hidden = true; return; }
         const d = days[i], date = new Date(d.date + "T00:00:00");
         tip.textContent = `${d.count} contribution${d.count === 1 ? "" : "s"} · ${MONTHS[date.getMonth()]} ${date.getDate()}`;
@@ -107,10 +119,12 @@ export async function mountHeatmap(el, { user = "faideleon", onStats, ink = fals
         const below = row < 2;
         tip.classList.toggle("is-below", below);
         tip.style.top = `${(geo.labelH + (below ? row + 1 : row) * geo.cell) / geo.dpr}px`;
-    });
-    el.addEventListener("pointerleave", () => (tip.hidden = true));
+    }
+    // mouse: follow the pointer; touch/pen: a tap shows the day and it stays until you tap elsewhere
+    el.addEventListener("pointermove", (e) => e.pointerType === "mouse" && showTip(e));
+    el.addEventListener("pointerdown", showTip);
+    el.addEventListener("pointerleave", (e) => e.pointerType === "mouse" && (tip.hidden = true));
+    document.addEventListener("pointerdown", (e) => { if (!el.contains(e.target)) tip.hidden = true; });
 
     layout();
-    // narrow screens scroll sideways: start at the most recent weeks
-    el.closest(".heatmap-scroll")?.scrollTo({ left: 1e6 });
 }

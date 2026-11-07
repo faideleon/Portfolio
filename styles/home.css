@@ -449,15 +449,41 @@
         display: none;
     }
 
+    .gh-body {
+        gap: 24px;
+        padding: 26px 20px 24px;
+    }
+
+    .gh-head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
     .gh-body .stats {
-        grid-template-columns: repeat(3, auto);
-        gap: 18px 28px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        padding-top: 16px;
+        border-top: 1px solid var(--card-line);
+    }
+
+    .gh-body .stats dt {
+        font-size: 20px;
+    }
+
+    .gh-body .stats dd {
+        white-space: nowrap;
     }
 
     .gh-links {
-        justify-content: flex-start;
-        flex-direction: column;
-        align-items: flex-start;
+        gap: 4px 22px;
+        padding-top: 16px;
+    }
+
+    .gh-links a,
+    .gh-links button {
+        min-height: 40px;
+        font-size: 14px;
     }
 }
 
@@ -469,7 +495,8 @@
 
 .heatmap {
     position: relative;
-    min-width: 720px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .heatmap canvas {
